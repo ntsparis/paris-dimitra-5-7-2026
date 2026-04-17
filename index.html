@@ -128,12 +128,6 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 #koumparos{background:var(--cream);}
 .koumparos-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:48px;margin-top:50px;}
 .koumparos-card{text-align:center;}
-.koumparos-photo{width:148px;height:148px;border-radius:50%;background:var(--blush-light);border:3px dashed var(--blush);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin:0 auto 18px;cursor:pointer;transition:background .3s,box-shadow .3s;position:relative;overflow:hidden;}
-.koumparos-photo:hover{background:rgba(245,196,168,.4);box-shadow:0 0 0 7px rgba(224,122,95,.1);}
-.koumparos-photo input{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;}
-.koumparos-photo svg{width:30px;height:30px;color:var(--blush);}
-.koumparos-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
-.koumparos-photo p{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--lt);}
 .koumparos-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;font-style:italic;color:var(--dark);}
 .koumparos-role{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);margin-top:6px;}
 
@@ -322,12 +316,7 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
     <div class="petal-div reveal d2"><span class="petal-icon">✿</span></div>
     <div class="koumparos-wrap reveal d3">
       <div class="koumparos-card">
-        <div class="koumparos-photo" id="ph-koumparos">
-          <input type="file" accept="image/*" onchange="loadPhoto(this,'ph-koumparos')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <p>Φωτό</p>
-          <img id="ph-koumparos-img" alt="">
-        </div>
+
         <p class="koumparos-name">Δέσποινα Τόκα</p>
         <p class="koumparos-role">Κουμπάρα</p>
       </div>
