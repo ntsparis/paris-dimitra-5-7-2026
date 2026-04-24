@@ -305,6 +305,49 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
 #wax-seal.pulsing{animation:sealPulse 1.8s ease-in-out infinite;}
 #wax-seal.cracking{animation:sealCrack .68s cubic-bezier(.4,0,.2,1) forwards;}
 
+/* Church illustration */
+#env-church{
+  position:absolute;
+  left:50%;top:7%;
+  transform:translateX(-50%);
+  width:clamp(200px,38%,400px);
+  z-index:4;
+  pointer-events:none;
+  opacity:0;
+  animation:fadeIn 1.1s ease forwards 0.6s;
+}
+#env-church svg{width:100%;height:auto;display:block;}
+/* Gold shimmer sweep */
+@keyframes goldShimmer{
+  0%  {stop-color:#BFA14A;stop-opacity:1;}
+  25% {stop-color:#F5E27A;stop-opacity:1;}
+  50% {stop-color:#D4A83A;stop-opacity:1;}
+  75% {stop-color:#FAF0A0;stop-opacity:1;}
+  100%{stop-color:#BFA14A;stop-opacity:1;}
+}
+@keyframes shimmerMove{
+  0%  {x1:'-30%';x2:'30%';}
+  100%{x1:'130%';x2:'190%';}
+}
+#church-lines{
+  stroke:url(#gold-grad);
+  fill:none;
+  stroke-width:1.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+#church-lines-thin{
+  stroke:url(#gold-grad);
+  fill:none;
+  stroke-width:.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+/* Animated shimmer on the gradient stops */
+.gs1{animation:goldShimmer 3.2s ease-in-out infinite;}
+.gs2{animation:goldShimmer 3.2s ease-in-out infinite 0.8s;}
+.gs3{animation:goldShimmer 3.2s ease-in-out infinite 1.6s;}
+
 /* Click hint */
 #env-hint{display:flex;align-items:center;gap:16px;opacity:0;animation:fadeIn 1s ease forwards 0.5s;}
 .env-hint-line{display:block;width:34px;height:1px;}
@@ -321,6 +364,67 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
   <div id="env-scene">
     <!-- Envelope body — plain rectangle -->
     <div id="env-body"></div>
+    <!-- Church illustration — minimal gold line art + date -->
+    <div id="env-church">
+      <svg viewBox="0 0 280 145" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="gold-grad" x1="-280" y1="0" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+            <animate attributeName="x1" values="-280;280;-280" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="0;560;0"   dur="4s" repeatCount="indefinite"/>
+            <stop offset="0%"   stop-color="#B8922E"/>
+            <stop offset="38%"  stop-color="#C9A84C"/>
+            <stop offset="50%"  stop-color="#EED468"/>
+            <stop offset="62%"  stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#B8922E"/>
+          </linearGradient>
+        </defs>
+
+        <g stroke="url(#gold-grad)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
+
+          <!-- Cross -->
+          <line x1="140" y1="6"  x2="140" y2="22"/>
+          <line x1="133" y1="12" x2="147" y2="12"/>
+
+          <!-- Dome: big arch from left shoulder to right shoulder -->
+          <path d="M88,75 C88,30 192,30 192,75"/>
+
+          <!-- Left wing: short vertical + corner + horizontal line left -->
+          <path d="M88,75 L88,88 Q88,92 84,92 L10,92"/>
+
+          <!-- Right wing: short vertical + corner + horizontal line right -->
+          <path d="M192,75 L192,88 Q192,92 196,92 L270,92"/>
+
+          <!-- Door arch -->
+          <path d="M124,92 L124,76 Q140,64 156,76 L156,92"/>
+
+        </g>
+
+        <!-- Sparkles -->
+        <g fill="#E8C050" stroke="none">
+          <!-- 4-pointed star shape reused via small paths -->
+          <!-- top-left area -->
+          <path d="M28,22 L30,18 L32,22 L36,24 L32,26 L30,30 L28,26 L24,24 Z" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" dur="4s" begin="0s"   repeatCount="indefinite"/><animate attributeName="transform" type="scale" values="0.6;1;0.6" dur="4s" begin="0s" additive="sum" repeatCount="indefinite"/></path>
+          <!-- top-right area -->
+          <path d="M248,18 L250,14 L252,18 L256,20 L252,22 L250,26 L248,22 L244,20 Z" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" dur="4s" begin="1.3s" repeatCount="indefinite"/></path>
+          <!-- right side -->
+          <path d="M262,50 L263.5,47 L265,50 L268,51.5 L265,53 L263.5,56 L262,53 L259,51.5 Z" opacity="0"><animate attributeName="opacity" values="0;0;.85;0;0" dur="3.6s" begin="0.7s" repeatCount="indefinite"/></path>
+          <!-- left side -->
+          <path d="M18,54 L19.5,51 L21,54 L24,55.5 L21,57 L19.5,60 L18,57 L15,55.5 Z" opacity="0"><animate attributeName="opacity" values="0;0;.85;0;0" dur="3.6s" begin="2s"   repeatCount="indefinite"/></path>
+          <!-- near dome left -->
+          <path d="M76,32 L77,30 L78,32 L80,33 L78,34 L77,36 L76,34 L74,33 Z" opacity="0"><animate attributeName="opacity" values="0;0;.7;0;0" dur="3.2s" begin="1.8s" repeatCount="indefinite"/></path>
+          <!-- near dome right -->
+          <path d="M202,32 L203,30 L204,32 L206,33 L204,34 L203,36 L202,34 L200,33 Z" opacity="0"><animate attributeName="opacity" values="0;0;.7;0;0" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></path>
+        </g>
+
+        <!-- Date text -->
+        <text x="140" y="125"
+          text-anchor="middle"
+          font-family="Cinzel,serif"
+          font-size="13"
+          letter-spacing="5"
+          fill="url(#gold-grad)">05.07.2026</text>
+      </svg>
+    </div>
     <!-- Flap — triangle, rotates around fold at 50% -->
     <div id="env-flap"></div>
     <!-- Wax seal — stays fixed, cracks before flap rotates -->
