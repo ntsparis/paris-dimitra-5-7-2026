@@ -717,6 +717,13 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
   function openEnvelope(){
     ov.removeEventListener('click',openEnvelope);
     clearTimeout(pulseTimer);
+    var hint=document.getElementById('env-hint');
+    if(hint){
+      hint.style.opacity=getComputedStyle(hint).opacity;
+      hint.style.animation='none';
+      hint.style.transition='opacity 1.4s ease';
+      requestAnimationFrame(function(){hint.style.opacity='0';});
+    }
     seal.classList.remove('pulsing');
     seal.classList.add('cracking');
     setTimeout(function(){flap.classList.add('open');},200);
