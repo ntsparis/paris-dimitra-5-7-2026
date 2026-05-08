@@ -365,9 +365,9 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
 /* Church illustration */
 #env-church{
   position:absolute;
-  left:50%;top:7%;
+  left:50%;top:5%;
   transform:translateX(-50%);
-  width:clamp(200px,38%,400px);
+  width:clamp(140px,24%,260px);
   z-index:4;
   pointer-events:none;
   opacity:0;
@@ -421,13 +421,13 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
   <div id="env-scene">
     <!-- Envelope body — plain rectangle -->
     <div id="env-body"></div>
-    <!-- Church illustration — minimal gold line art + date -->
+    <!-- Church illustration — traced from reference + date -->
     <div id="env-church">
-      <svg viewBox="0 0 280 145" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg viewBox="0 0 478 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs>
-          <linearGradient id="gold-grad" x1="-280" y1="0" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-            <animate attributeName="x1" values="-280;280;-280" dur="4s" repeatCount="indefinite"/>
-            <animate attributeName="x2" values="0;560;0"   dur="4s" repeatCount="indefinite"/>
+          <linearGradient id="gold-grad" gradientUnits="objectBoundingBox" x1="-1" y1="0" x2="0" y2="0">
+            <animate attributeName="x1" values="-1;1;-1" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="0;2;0"   dur="4s" repeatCount="indefinite"/>
             <stop offset="0%"   stop-color="#B8922E"/>
             <stop offset="38%"  stop-color="#C9A84C"/>
             <stop offset="50%"  stop-color="#EED468"/>
@@ -436,49 +436,28 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
           </linearGradient>
         </defs>
 
-        <g stroke="url(#gold-grad)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6">
-
-          <!-- Cross -->
-          <line x1="140" y1="6"  x2="140" y2="22"/>
-          <line x1="133" y1="12" x2="147" y2="12"/>
-
-          <!-- Dome: big arch from left shoulder to right shoulder -->
-          <path d="M88,75 C88,30 192,30 192,75"/>
-
-          <!-- Left wing: short vertical + corner + horizontal line left -->
-          <path d="M88,75 L88,88 Q88,92 84,92 L10,92"/>
-
-          <!-- Right wing: short vertical + corner + horizontal line right -->
-          <path d="M192,75 L192,88 Q192,92 196,92 L270,92"/>
-
-          <!-- Door arch -->
-          <path d="M124,92 L124,76 Q140,64 156,76 L156,92"/>
-
+        <!-- Traced church silhouette (Potrace filled-outline) -->
+        <g fill="url(#gold-grad)" stroke="none" transform="translate(0,368) scale(0.1,-0.1)">
+          <path d="M2413 3053 c-8 -3 -13 -25 -13 -60 l0 -56 -50 7 c-49 7 -50 6 -50 -20 0 -26 1 -26 50 -22 l50 5 0 -63 0 -64 -39 0 c-22 0 -43 -4 -46 -10 -3 -5 -17 -10 -31 -10 -13 0 -32 -4 -42 -9 -9 -5 -34 -17 -54 -25 -64 -28 -227 -164 -228 -190 0 -5 -8 -16 -18 -25 -20 -18 -74 -126 -93 -186 -7 -22 -17 -44 -21 -49 -4 -6 -8 -27 -8 -47 0 -46 -21 -97 -52 -126 -41 -37 -96 -46 -224 -32 -63 6 -124 8 -137 5 -12 -4 -49 -9 -82 -12 -33 -4 -64 -10 -70 -15 -5 -5 -15 -9 -22 -9 -17 0 -102 -40 -127 -60 -80 -62 -166 -194 -166 -254 0 -13 -5 -26 -10 -28 -12 -4 -15 -322 -3 -341 11 -17 26 -232 26 -382 1 -140 -11 -272 -24 -281 -5 -3 -9 -16 -9 -30 0 -13 -4 -32 -9 -42 -34 -69 -47 -91 -75 -120 -36 -38 -79 -62 -112 -62 -13 0 -26 -4 -29 -10 -4 -6 -78 -10 -191 -10 -153 0 -184 -2 -184 -14 0 -20 17 -23 155 -25 206 -3 308 19 381 85 37 34 80 108 93 159 7 28 17 59 21 70 33 75 29 361 -10 720 -11 106 -4 285 11 285 5 0 9 13 9 28 0 30 20 82 33 82 4 0 7 6 7 14 0 24 95 121 139 141 22 11 41 23 41 28 0 4 11 7 24 7 14 0 27 4 30 9 13 20 154 28 396 20 39 -1 102 10 110 20 3 3 14 11 25 17 24 14 53 62 54 92 1 12 6 22 11 22 6 0 10 19 10 43 0 24 4 47 8 53 5 5 15 29 22 54 20 65 87 174 146 236 28 30 54 54 57 54 6 0 22 12 61 45 21 18 55 35 71 35 8 0 15 4 15 9 0 14 64 23 198 28 82 3 122 1 122 -6 0 -6 14 -11 30 -11 17 0 30 -3 30 -8 0 -4 15 -13 33 -21 49 -22 110 -66 161 -117 50 -49 106 -126 106 -143 0 -6 4 -11 9 -11 5 0 11 -8 14 -17 4 -10 18 -49 31 -88 14 -38 26 -84 26 -102 0 -17 5 -35 10 -38 6 -3 10 -17 10 -31 0 -38 72 -104 113 -104 18 0 38 -5 44 -11 7 -7 39 -8 106 -1 98 9 255 -1 289 -19 10 -5 29 -9 43 -9 14 0 25 -4 25 -10 0 -5 9 -10 20 -10 11 0 20 -4 20 -10 0 -5 7 -10 15 -10 8 0 15 -4 15 -10 0 -5 4 -10 10 -10 35 0 140 -168 140 -223 0 -14 5 -29 10 -32 13 -8 13 -276 1 -307 -5 -13 -15 -70 -21 -128 -7 -58 -17 -120 -22 -139 -6 -18 -11 -113 -11 -210 0 -188 4 -216 52 -333 5 -13 15 -37 22 -53 16 -41 89 -95 152 -113 36 -10 115 -16 255 -19 196 -3 202 -3 202 16 0 19 -9 20 -202 24 -112 2 -219 8 -238 12 -40 8 -119 63 -120 83 0 6 -4 12 -10 12 -5 0 -10 7 -10 15 0 8 -4 15 -10 15 -5 0 -10 11 -10 24 0 14 -4 27 -9 30 -9 6 -15 36 -31 150 -15 115 -11 207 20 421 26 173 31 228 36 354 4 89 2 137 -5 144 -6 6 -11 24 -11 39 0 16 -4 36 -9 46 -5 9 -16 32 -23 50 -7 17 -16 32 -20 32 -5 0 -8 5 -8 11 0 20 -63 88 -114 122 -28 19 -80 45 -116 57 -59 22 -83 24 -255 25 -104 1 -203 5 -218 10 -39 10 -77 51 -77 80 0 14 -4 25 -9 25 -5 0 -11 17 -14 38 -7 50 -17 93 -27 117 -22 57 -75 156 -91 174 -11 11 -19 23 -19 26 0 4 -6 13 -14 21 -8 7 -23 24 -33 37 -10 13 -45 43 -78 67 -33 25 -61 48 -63 53 -2 4 -12 7 -23 7 -10 0 -19 5 -19 10 0 6 -10 10 -23 10 -13 0 -27 3 -31 7 -11 12 -98 32 -136 33 l-35 0 0 58 c0 31 4 60 9 64 6 4 32 4 58 1 44 -5 48 -4 48 16 0 23 -4 25 -73 21 l-49 -2 5 34 c3 18 6 38 7 43 4 13 -10 45 -19 44 -3 0 -12 -3 -18 -6z"/>
+          <path d="M2345 1590 c-3 -5 -19 -10 -36 -10 -16 0 -37 -4 -47 -9 -9 -5 -39 -19 -67 -32 -57 -27 -75 -40 -123 -89 -45 -47 -112 -148 -112 -172 0 -10 -4 -18 -9 -18 -27 0 -50 -256 -51 -568 0 -239 2 -286 15 -298 12 -13 16 -13 20 -2 3 7 7 164 9 348 4 333 9 417 26 455 5 11 15 38 22 60 20 62 85 156 134 193 58 45 152 91 186 92 15 0 30 5 33 10 8 13 149 13 200 -1 53 -13 115 -45 151 -76 16 -14 36 -30 44 -37 40 -29 120 -161 120 -197 0 -10 4 -20 9 -23 18 -12 24 -101 28 -459 3 -342 5 -368 21 -365 16 3 17 30 16 368 -1 353 -6 445 -25 465 -5 5 -9 17 -9 26 0 19 -41 102 -52 107 -5 2 -8 9 -8 16 0 7 -28 42 -63 78 -63 65 -150 116 -232 138 -51 13 -192 13 -200 0z"/>
         </g>
 
         <!-- Sparkles -->
         <g fill="#E8C050" stroke="none">
-          <!-- 4-pointed star shape reused via small paths -->
-          <!-- top-left area -->
-          <path d="M28,22 L30,18 L32,22 L36,24 L32,26 L30,30 L28,26 L24,24 Z" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" dur="4s" begin="0s"   repeatCount="indefinite"/><animate attributeName="transform" type="scale" values="0.6;1;0.6" dur="4s" begin="0s" additive="sum" repeatCount="indefinite"/></path>
-          <!-- top-right area -->
-          <path d="M248,18 L250,14 L252,18 L256,20 L252,22 L250,26 L248,22 L244,20 Z" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" dur="4s" begin="1.3s" repeatCount="indefinite"/></path>
-          <!-- right side -->
-          <path d="M262,50 L263.5,47 L265,50 L268,51.5 L265,53 L263.5,56 L262,53 L259,51.5 Z" opacity="0"><animate attributeName="opacity" values="0;0;.85;0;0" dur="3.6s" begin="0.7s" repeatCount="indefinite"/></path>
-          <!-- left side -->
-          <path d="M18,54 L19.5,51 L21,54 L24,55.5 L21,57 L19.5,60 L18,57 L15,55.5 Z" opacity="0"><animate attributeName="opacity" values="0;0;.85;0;0" dur="3.6s" begin="2s"   repeatCount="indefinite"/></path>
-          <!-- near dome left -->
-          <path d="M76,32 L77,30 L78,32 L80,33 L78,34 L77,36 L76,34 L74,33 Z" opacity="0"><animate attributeName="opacity" values="0;0;.7;0;0" dur="3.2s" begin="1.8s" repeatCount="indefinite"/></path>
-          <!-- near dome right -->
-          <path d="M202,32 L203,30 L204,32 L206,33 L204,34 L203,36 L202,34 L200,33 Z" opacity="0"><animate attributeName="opacity" values="0;0;.7;0;0" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></path>
+          <path d="M48,68 L51,62 L54,68 L60,71 L54,74 L51,80 L48,74 L42,71 Z" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" dur="4s" begin="0s" repeatCount="indefinite"/></path>
+          <path d="M425,55 L428,49 L431,55 L437,58 L431,61 L428,67 L425,61 L419,58 Z" opacity="0"><animate attributeName="opacity" values="0;0;1;0;0" dur="4s" begin="1.3s" repeatCount="indefinite"/></path>
+          <path d="M448,140 L450.5,135 L453,140 L458,142.5 L453,145 L450.5,150 L448,145 L443,142.5 Z" opacity="0"><animate attributeName="opacity" values="0;0;.85;0;0" dur="3.6s" begin="0.7s" repeatCount="indefinite"/></path>
+          <path d="M28,148 L30.5,143 L33,148 L38,150.5 L33,153 L30.5,158 L28,153 L23,150.5 Z" opacity="0"><animate attributeName="opacity" values="0;0;.85;0;0" dur="3.6s" begin="2s" repeatCount="indefinite"/></path>
+          <path d="M125,90 L126.5,87 L128,90 L131,92 L128,93.5 L126.5,96 L125,94 L122,92 Z" opacity="0"><animate attributeName="opacity" values="0;0;.7;0;0" dur="3.2s" begin="1.8s" repeatCount="indefinite"/></path>
+          <path d="M348,90 L349.5,87 L351,90 L354,92 L351,93.5 L349.5,96 L348,94 L345,92 Z" opacity="0"><animate attributeName="opacity" values="0;0;.7;0;0" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></path>
         </g>
 
         <!-- Date text -->
-        <text x="140" y="125"
+        <text x="239" y="396"
           text-anchor="middle"
           font-family="Cinzel,serif"
-          font-size="13"
-          letter-spacing="5"
+          font-size="22"
+          letter-spacing="8"
           fill="url(#gold-grad)">05.07.2026</text>
       </svg>
     </div>
