@@ -101,7 +101,8 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .photo-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;}
 .photo-placeholder svg{width:38px;height:38px;color:var(--blush);}
 .photo-placeholder p{font-family:'Caveat',cursive;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--lt);}
-.photo-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;}
+.photo-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;}
+.photo-placeholder.has-photo{border:none;background:transparent;cursor:default;min-height:480px;}
 .couple-text{padding:56px 44px;display:flex;flex-direction:column;justify-content:center;background:var(--cream2);}
 @media(max-width:600px){.couple-text{padding:40px 28px;}}
 .couple-text .sec-tag{font-family:'Caveat','Caveat',cursive;font-size:38px;font-weight:500;text-transform:none;letter-spacing:0;text-align:left;margin-bottom:14px;color:var(--coral);}
@@ -265,8 +266,18 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
 
 /* ΠΙΚΑΝΤΙΚΕΣ */
 #pikantikes{background:var(--cream);}
-.pik-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:50px;text-align:left;}
-@media(max-width:560px){.pik-grid{grid-template-columns:1fr;}}
+/* Pikantikes split layout (matches couple-photo style) */
+#pikantikes{background:var(--cream);overflow:hidden;}
+.pik-split{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:720px;}
+.pik-content{padding:86px 44px;display:flex;flex-direction:column;justify-content:center;text-align:left;background:var(--cream);}
+.pik-content .sec-tag,.pik-content .sec-heading{text-align:left;}
+.pik-content .sec-heading{font-size:clamp(28px,4vw,46px);}
+.pik-content .petal-div{margin:0 auto;}
+.pik-photo{position:relative;overflow:hidden;background:transparent;}
+.pik-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
+@media(max-width:768px){.pik-split{grid-template-columns:1fr;min-height:auto;}.pik-content{padding:60px 28px;text-align:center;}.pik-content .sec-tag,.pik-content .sec-heading{text-align:center;}.pik-content .petal-div{margin:0 auto;}.pik-photo{aspect-ratio:4/5;}}
+.pik-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;text-align:left;}
+@media(max-width:768px){.pik-grid{grid-template-columns:1fr;}}
 .pik-card{padding:26px 22px;border-top:2px solid var(--blush);background:var(--cream2);position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
 .pik-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(224,122,95,.1);}
 .pik-q{font-family:'Caveat',cursive;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);margin-bottom:10px;}
@@ -569,11 +580,8 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
 <!-- COUPLE PHOTO -->
 <div id="couple-photo">
   <div class="couple-wrap">
-    <div class="photo-placeholder" id="ph-couple">
-      <input type="file" accept="image/*" onchange="loadPhoto(this,'ph-couple')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-      <p>Φωτογραφία Ζευγαριού</p>
-      <img id="ph-couple-img" alt="">
+    <div class="photo-placeholder has-photo" id="ph-couple">
+      <img id="ph-couple-img" src="photos/IMG_1.jpg" alt="Παρασκευάς & Δήμητρα" style="display:block;">
     </div>
     <div class="couple-text reveal d1">
       <p class="sec-tag">Παρασκευάς &amp; Δήμητρα</p>
@@ -618,12 +626,10 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
 <!-- PHOTO MOMENT 2 — photo RIGHT -->
 <div class="pm pm-alt">
   <div class="pm-inner pm-r">
-    <div class="pm-pic reveal-right" id="pm2">
+    <div class="pm-pic reveal-right has-photo" id="pm2">
       <div class="pm-pimg">
-        <input type="file" accept="image/*" onchange="loadPhoto(this,'pm2')">
-        <img id="pm2-img" alt="">
+        <img id="pm2-img" src="photos/IMG_2.jpg" alt="" style="display:block;">
       </div>
-      <div class="pm-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Φωτογραφία</span></div>
     </div>
     <div class="pm-accent reveal-left">
       <p class="pm-tag">Ιστορία &amp; Αναμνήσεις</p>
@@ -636,16 +642,21 @@ footer{background:var(--cream2);padding:70px 24px;text-align:center;}
 
 <!-- ΠΙΚΑΝΤΙΚΕΣ -->
 <section id="pikantikes">
-  <div class="section">
-    <p class="sec-tag reveal">Πικάντικες Πληροφορίες</p>
-    <h2 class="sec-heading reveal d1">Λίγα πράγματα<br>που ίσως δεν ξέρετε</h2>
-    <div class="petal-div reveal d2"><span class="petal-icon">✿</span></div>
-    <div class="pik-grid">
-      <div class="pik-card reveal-right d1"><p class="pik-q">Ποιος έκανε την πρώτη κίνηση;</p><p class="pik-a">Ο γαμπρός έκανε την πρώτη κίνηση και δεν το έβαλε κάτω. Λίγα ή και πολλά χιλιόμετρα μετά, όλα πήραν τον δρόμο τους.</p></div>
-      <div class="pik-card reveal-left d2"><p class="pik-q">Ποιος βγάζει τα σκουπίδια;</p><p class="pik-a">Ο γαμπρός… αλλά μόνο αν του το θυμίσει η νύφη! Διαφορετικά, το βγάζουμε και οι δύο μαζί όταν φεύγουμε.</p></div>
-      <div class="pik-card reveal-right d2"><p class="pik-q">Ποιο ήταν το πιο αξέχαστο ραντεβού σας;</p><p class="pik-a">Τα ταξίδια μας. Κάθε ταξίδι μια ξεχωριστή εμπειρία με αποκορύφωμα αυτό στο Ντουμπάι. Δεν είναι μία στιγμή, είναι όλες.</p></div>
-      <div class="pik-card reveal-left d3"><p class="pik-q">Πού θα πάτε για μήνα του μέλιτος;</p><p class="pik-a">Πάμε για τρέλες, στις…</p></div>
-      <div class="pik-card reveal-right d3"><p class="pik-q">Ποιο είναι το καλύτερο γεύμα που φάγατε μαζί;</p><p class="pik-a">Στο Βαρούλκο. Ριζότο με μελάνι σουπιάς… αξέχαστο.</p></div>
+  <div class="pik-split">
+    <div class="pik-content reveal-left d1">
+      <p class="sec-tag">Πικάντικες Πληροφορίες</p>
+      <h2 class="sec-heading">Λίγα πράγματα<br>που ίσως δεν ξέρετε</h2>
+      <div class="petal-div"><span class="petal-icon">✿</span></div>
+      <div class="pik-grid">
+        <div class="pik-card"><p class="pik-q">Ποιος έκανε την πρώτη κίνηση;</p><p class="pik-a">Ο γαμπρός έκανε την πρώτη κίνηση και δεν το έβαλε κάτω. Λίγα ή και πολλά χιλιόμετρα μετά, όλα πήραν τον δρόμο τους.</p></div>
+        <div class="pik-card"><p class="pik-q">Ποιος βγάζει τα σκουπίδια;</p><p class="pik-a">Ο γαμπρός… αλλά μόνο αν του το θυμίσει η νύφη! Διαφορετικά, το βγάζουμε και οι δύο μαζί όταν φεύγουμε.</p></div>
+        <div class="pik-card"><p class="pik-q">Ποιο ήταν το πιο αξέχαστο ραντεβού σας;</p><p class="pik-a">Τα ταξίδια μας. Κάθε ταξίδι μια ξεχωριστή εμπειρία με αποκορύφωμα αυτό στο Ντουμπάι. Δεν είναι μία στιγμή, είναι όλες.</p></div>
+        <div class="pik-card"><p class="pik-q">Πού θα πάτε για μήνα του μέλιτος;</p><p class="pik-a">Πάμε για τρέλες, στις…</p></div>
+        <div class="pik-card"><p class="pik-q">Ποιο είναι το καλύτερο γεύμα που φάγατε μαζί;</p><p class="pik-a">Στο Βαρούλκο. Ριζότο με μελάνι σουπιάς… αξέχαστο.</p></div>
+      </div>
+    </div>
+    <div class="pik-photo reveal-right d2">
+      <img src="photos/IMG_3.jpg" alt="Παρασκευάς & Δήμητρα">
     </div>
   </div>
 </section>
