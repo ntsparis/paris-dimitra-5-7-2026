@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="Σας προσκαλούμε στον γάμο μας — Κυριακή 5 Ιουλίου 2026, Λάρισα. ✿">
 <meta name="twitter:image" content="preview.jpg">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23C35040'/%3E%3Ccircle cx='16' cy='16' r='11.5' fill='none' stroke='rgba(253%2C230%2C214%2C.45)' stroke-width='1'/%3E%3Ctext x='16' y='20.5' text-anchor='middle' font-family='Georgia%2Cserif' font-size='10.5' font-weight='bold' fill='%23FDF6F0' letter-spacing='1'%3EΠ%7CΔ%3C%2Ftext%3E%3C%2Fsvg%3E"><link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root {
   --coral:#E07A5F; --peach:#F2A07B; --blush:#F5C4A8; --blush-light:#FAE5D6;
@@ -89,7 +89,8 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 @media(min-width:768px){.hero-names{font-size:88px;}}
 @media(min-width:1024px){.hero-names{font-size:104px;}}
 @media(min-width:1280px){.hero-names{font-size:118px;}}
-.hero-names .name-amp{display:block;color:var(--coral);font-size:.6em;line-height:1;margin:2px 0;}
+.hero-names .name-amp{display:block;color:var(--coral);font-size:.7em;line-height:1;margin:2px 0;font-family:'Great Vibes',cursive;font-style:normal;}
+.amp{font-family:'Great Vibes',cursive;font-style:normal;font-weight:400;}
 .hero-div{margin:36px auto;opacity:0;animation:fadeIn .65s ease forwards .55s;}
 .hero-date{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:clamp(11px,1.8vw,14px);letter-spacing:3px;text-transform:uppercase;color:var(--mid);opacity:0;animation:fadeUp .65s ease forwards .65s;}
 .hero-place{font-size:20px;font-style:italic;color:var(--peach);margin-top:10px;opacity:0;animation:fadeUp .65s ease forwards .78s;}
@@ -99,9 +100,10 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 
 /* COUPLE PHOTO SPLIT */
 #couple-photo{background:var(--cream2);overflow:hidden;}
-.couple-wrap{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:400px;}
+.couple-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr;min-height:560px;}
 @media(max-width:600px){.couple-wrap{grid-template-columns:1fr;}}
-.photo-placeholder{background:transparent;position:relative;overflow:hidden;min-height:480px;}
+.photo-placeholder{background:transparent;position:relative;overflow:hidden;min-height:620px;}
+@media(max-width:600px){.photo-placeholder{min-height:420px;}}
 .photo-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
 .couple-text{padding:56px 44px;display:flex;flex-direction:column;justify-content:center;background:var(--cream2);}
 @media(max-width:600px){.couple-text{padding:40px 28px;}}
@@ -126,6 +128,15 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 
 /* STORY */
 #story{background:var(--cream);}
+.story-intro{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;min-height:700px;}
+.story-intro-img{position:relative;overflow:hidden;background:transparent;}
+.story-intro-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
+.story-intro-text{padding:64px 48px;display:flex;flex-direction:column;justify-content:center;text-align:left;}
+.story-intro-text .sec-tag,.story-intro-text .sec-heading{text-align:left;}
+.story-intro-text .petal-div,.pik-content .petal-div{margin:0 auto;max-width:340px;width:100%;align-self:center;}
+.story-intro-text .sec-body{text-align:left;}
+@media(max-width:768px){.story-intro{grid-template-columns:1fr;min-height:auto;}.story-intro-img{aspect-ratio:4/5;}.story-intro-text{padding:48px 28px;text-align:center;}.story-intro-text .sec-tag,.story-intro-text .sec-heading,.story-intro-text .sec-body{text-align:center;}.story-intro-text .petal-div{margin:0 auto;}}
+#story .section{padding-top:0;}
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:50px;text-align:left;}
 @media(max-width:560px){.story-grid{grid-template-columns:1fr;}}
 .story-card{padding:28px 24px;border-top:2px solid var(--blush);background:var(--cream2);position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
@@ -163,7 +174,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .tl-dot:hover{transform:scale(1.4);}
 .tl-dot.sage{background:var(--sage);box-shadow:0 0 0 5px var(--cream2),0 0 0 7px var(--sage-light);}
 .tl-dot.peach{background:var(--peach);box-shadow:0 0 0 5px var(--cream2),0 0 0 7px rgba(242,160,123,.35);}
-.tl-time{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:6px;}
+.tl-time{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:8px;font-weight:500;}
 .tl-title{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:21px;font-weight:500;color:var(--dark);margin-bottom:4px;line-height:1.2;}
 .tl-sub{font-size:14px;color:var(--lt);font-style:italic;line-height:1.5;}
 @media(max-width:540px){
@@ -235,7 +246,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 @media(min-width:768px){.footer-names{font-size:54px;}}
 @media(min-width:1024px){.footer-names{font-size:68px;}}
 .footer-msg{font-size:19px;font-style:italic;color:var(--mid);line-height:1.9;max-width:500px;margin:0 auto;}
-.footer-year{margin-top:28px;font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--blush);}
+.footer-year{margin-top:28px;font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);font-weight:500;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -259,11 +270,10 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 #pikantikes{background:var(--cream);}
 /* Pikantikes split layout (matches couple-photo style) */
 #pikantikes{background:var(--cream);overflow:hidden;}
-.pik-split{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:720px;}
+.pik-split{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:580px;padding-bottom:60px;}
 .pik-content{padding:86px 44px;display:flex;flex-direction:column;justify-content:center;text-align:left;background:var(--cream);}
 .pik-content .sec-tag,.pik-content .sec-heading{text-align:left;}
 .pik-content .sec-heading{font-size:clamp(28px,4vw,46px);}
-.pik-content .petal-div{margin:0 auto;}
 .pik-photo{position:relative;overflow:hidden;background:transparent;}
 .pik-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
 @media(max-width:768px){.pik-split{grid-template-columns:1fr;min-height:auto;}.pik-content{padding:60px 28px;text-align:center;}.pik-content .sec-tag,.pik-content .sec-heading{text-align:center;}.pik-content .petal-div{margin:0 auto;}.pik-photo{aspect-ratio:4/5;}}
@@ -520,7 +530,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 
 <!-- NAV -->
 <nav id="main-nav">
-  <span class="nav-logo">Π &amp; Δ</span>
+  <span class="nav-logo">Π <span class="amp">&amp;</span> Δ</span>
   <ul class="nav-links">
     <li><a href="#home">Αρχική</a></li>
     <li><a href="#story">Ιστορία</a></li>
@@ -537,7 +547,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 </nav>
 <div class="drawer-overlay" id="overlay"></div>
 <div class="drawer" id="drawer">
-  <span class="drawer-names">Παρασκευάς &amp; Δήμητρα</span>
+  <span class="drawer-names">Παρασκευάς <span class="amp">&amp;</span> Δήμητρα</span>
   <a href="#home">Αρχική</a>
   <a href="#story">Η Ιστορία Μας</a>
   <a href="#pikantikes">Πικάντικα</a>
@@ -575,9 +585,8 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <img src="photos/IMG_1.jpg" alt="Παρασκευάς & Δήμητρα">
     </div>
     <div class="couple-text reveal d1">
-      <p class="sec-tag">Παρασκευάς &amp; Δήμητρα</p>
-      <h2 class="sec-heading">Η αγάπη μας<br>γίνεται υπόσχεση</h2>
-      <p>Γνωριστήκαμε σε ένα μονοπάτι της Πάρνηθας, ανάμεσα στα δέντρα και τη φύση, κατά τη διάρκεια μιας πεζοπορίας. Μια συνάντηση που ίσως να μην είχε συμβεί ποτέ, αν ο κολλητός του γαμπρού και η φίλη της νύφης δεν είχαν φροντίσει να μας γνωρίσουν. Από την πρώτη στιγμή υπήρξε κάτι ξεχωριστό…</p>
+      <p class="sec-tag">Η αγάπη μας<br>γίνεται υπόσχεση</p>
+      <p>Γνωριστήκαμε σε ένα μονοπάτι της Πάρνηθας, ανάμεσα στα δέντρα και τη φύση, κατά τη διάρκεια μιας πεζοπορίας. Μια συνάντηση που ίσως να μην είχε συμβεί ποτέ, αν οι φίλοι μας δεν είχαν φροντίσει να μας γνωρίσουν. Από την πρώτη στιγμή υπήρξε κάτι ξεχωριστό…</p>
     </div>
   </div>
 </div>
@@ -599,11 +608,18 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 
 <!-- STORY -->
 <section id="story">
+  <div class="story-intro">
+    <div class="story-intro-img reveal-left">
+      <img src="photos/IMG_2.jpg" alt="Παρασκευάς & Δήμητρα">
+    </div>
+    <div class="story-intro-text reveal-right">
+      <p class="sec-tag">Η Ιστορία Μας</p>
+      <h2 class="sec-heading">Από την πρώτη ματιά<br>ως το «ναι»</h2>
+      <div class="petal-div"><span class="petal-icon">✿</span></div>
+      <p class="sec-body" style="margin-top:20px;">Κάθε αγάπη έχει τη δική της ξεχωριστή ιστορία.<br>Αυτή είναι η δική μας…</p>
+    </div>
+  </div>
   <div class="section">
-    <p class="sec-tag reveal">Η Ιστορία Μας</p>
-    <h2 class="sec-heading reveal d1">Από την πρώτη ματιά<br>ως το «ναι»</h2>
-    <div class="petal-div reveal d2"><span class="petal-icon">✿</span></div>
-    <p class="sec-body reveal d2" style="margin-top:20px;">Κάθε αγάπη έχει τη δική της ξεχωριστή ιστορία.<br>Αυτή είναι η δική μας…</p>
     <div class="story-grid">
       <div class="story-card reveal-left d1"><span class="story-card-year">2022</span><p class="story-card-title">✿ &nbsp;Η Γνωριμία</p><p class="story-card-text">Ένα μονοπάτι στην Πάρνηθα στις 11 Σεπτεμβρίου, μια πεζοπορία, και δύο κοινοί φίλοι που φρόντισαν να μας γνωρίσουν. Από την πρώτη ματιά ξεκινήσαμε να περπατάμε μαζί στο ίδιο μονοπάτι.</p></div>
       <div class="story-card reveal-left d3"><span class="story-card-year">2023</span><p class="story-card-title">✿ &nbsp;Τα Ταξίδια Μας</p><p class="story-card-text">Τρέξιμο για την ενέργεια, ταξίδια για τις αναμνήσεις. Κάθε προορισμός μια ξεχωριστή εμπειρία με αποκορύφωμα το Ντουμπάι.</p></div>
@@ -612,37 +628,19 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     </div>
   </div>
 </section>
-<div class="full-div"></div>
-
-<!-- PHOTO MOMENT 2 — photo RIGHT -->
-<div class="pm pm-alt">
-  <div class="pm-inner pm-r">
-    <div class="pm-pic reveal-right" id="pm2">
-      <div class="pm-pimg">
-        <img src="photos/IMG_2.jpg" alt="">
-      </div>
-    </div>
-    <div class="pm-accent reveal-left">
-      <p class="pm-tag">Ιστορία &amp; Αναμνήσεις</p>
-      <div class="petal-div" style="max-width:180px;"><span class="petal-icon">✿</span></div>
-      <p class="pm-heading">Δύο ψυχές,<br>ένα ταξίδι</p>
-      <p class="pm-date">Λάρισα · 2026</p>
-    </div>
-  </div>
-</div>
 
 <!-- ΠΙΚΑΝΤΙΚΕΣ -->
 <section id="pikantikes">
   <div class="pik-split">
     <div class="pik-content reveal-left d1">
       <p class="sec-tag">Πικάντικες Πληροφορίες</p>
-      <h2 class="sec-heading">Λίγα πράγματα<br>που ίσως δεν ξέρετε</h2>
+      <h2 class="sec-heading">Λίγα πράγματα<br>που ίσως δεν ξέρετε…</h2>
       <div class="petal-div"><span class="petal-icon">✿</span></div>
       <div class="pik-grid">
         <div class="pik-card"><p class="pik-q">Ποιος έκανε την πρώτη κίνηση;</p><p class="pik-a">Ο γαμπρός έκανε την πρώτη κίνηση και δεν το έβαλε κάτω. Λίγα ή και πολλά χιλιόμετρα μετά, όλα πήραν τον δρόμο τους.</p></div>
         <div class="pik-card"><p class="pik-q">Ποιος βγάζει τα σκουπίδια;</p><p class="pik-a">Ο γαμπρός… αλλά μόνο αν του το θυμίσει η νύφη! Διαφορετικά, το βγάζουμε και οι δύο μαζί όταν φεύγουμε.</p></div>
         <div class="pik-card"><p class="pik-q">Ποιο ήταν το πιο αξέχαστο ραντεβού σας;</p><p class="pik-a">Τα ταξίδια μας. Κάθε ταξίδι μια ξεχωριστή εμπειρία με αποκορύφωμα αυτό στο Ντουμπάι. Δεν είναι μία στιγμή, είναι όλες.</p></div>
-        <div class="pik-card"><p class="pik-q">Πού θα πάτε για μήνα του μέλιτος;</p><p class="pik-a">Πάμε για τρέλες, στις…</p></div>
+        <div class="pik-card"><p class="pik-q">Πού θα πάτε για μήνα του μέλιτος;</p><p class="pik-a">Θα πάμε Σιγκαπούρη-Μπαλί.</p></div>
         <div class="pik-card"><p class="pik-q">Ποιο είναι το καλύτερο γεύμα που φάγατε μαζί;</p><p class="pik-a">Στο Βαρούλκο. Ριζότο με μελάνι σουπιάς… αξέχαστο.</p></div>
       </div>
     </div>
@@ -662,11 +660,11 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <div class="families-grid">
       <div class="family-side reveal-left d1">
         <p class="family-label">Οικογένεια Νύφης</p>
-        <p class="family-names">Χρήστος Κωστάκης<br>&amp; Αγλαΐα Παναστασίου<em>Γονείς Δήμητρας</em></p>
+        <p class="family-names">Χρήστος Κωστάκης<br><span class="amp">&amp;</span> Αγλαΐα Παναστασίου<em>Γονείς Δήμητρας</em></p>
       </div>
       <div class="family-side reveal-right d1">
         <p class="family-label">Οικογένεια Γαμπρού</p>
-        <p class="family-names">Αχιλλέας Ντσούνος<br>&amp; Μαρία Παππά<em>Γονείς Παρασκευά</em></p>
+        <p class="family-names">Αχιλλέας Ντσούνος<br><span class="amp">&amp;</span> Μαρία Παππά<em>Γονείς Παρασκευά</em></p>
       </div>
     </div>
   </div>
@@ -704,7 +702,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <div class="tl-item reveal-right d1">
         <div class="tl-cell left is-empty"></div>
         <div class="tl-dot-col"><div class="tl-dot sage"></div></div>
-        <div class="tl-cell right has-content"><p class="tl-time">Απόγευμα</p><p class="tl-title">Ετοιμασία Γαμπρού</p><p class="tl-sub">Comfort Suites &amp; Rooms</p></div>
+        <div class="tl-cell right has-content"><p class="tl-time">Απόγευμα</p><p class="tl-title">Ετοιμασία Γαμπρού</p><p class="tl-sub">Comfort Suites <span class="amp">&amp;</span> Rooms</p></div>
       </div>
       <div class="tl-item reveal-left d1">
         <div class="tl-cell left has-content"><p class="tl-time">20:00</p><p class="tl-title">Θρησκευτική Τελετή</p><p class="tl-sub">Ιερός Ναός Προφήτη Ηλία<br>Λάρισα</p></div>
@@ -715,11 +713,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
         <div class="tl-cell left is-empty"></div>
         <div class="tl-dot-col"><div class="tl-dot peach"></div></div>
         <div class="tl-cell right has-content"><p class="tl-time">~21:00</p><p class="tl-title">Δεξίωση</p><p class="tl-sub">Κτήμα Έλενα<br>Αμπελώνας, Λάρισα</p></div>
-      </div>
-      <div class="tl-item reveal-left d1">
-        <div class="tl-cell left has-content"><p class="tl-time">Ως το ξημέρωμα</p><p class="tl-title">Χορός κάτω απ' τ' αστέρια</p><p class="tl-sub">Μουσική, χορός<br>κι αξέχαστες στιγμές μαζί σας</p></div>
-        <div class="tl-dot-col"><div class="tl-dot sage"></div></div>
-        <div class="tl-cell right is-empty"></div>
       </div>
     </div>
   </div>
@@ -856,9 +849,9 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 <!-- FOOTER -->
 <footer>
   <p class="footer-pretext reveal">Σε λίγες ημέρες ξεκινάμε<br>το πιο όμορφο κεφάλαιο της ζωής μας</p>
-  <p class="footer-names reveal d1">Παρασκευάς &amp; Δήμητρα</p>
   <div class="petal-div reveal d2" style="max-width:200px;"><span class="petal-icon">✿</span></div>
-  <p class="footer-msg reveal d3">Με αγάπη και ευγνωμοσύνη σας περιμένουμε,<br>για να γίνει αυτή η μέρα δική μας και δική σας.</p>
+  <p class="footer-msg reveal d3">Με όλη μας την αγάπη σας περιμένουμε να μοιραστούμε μαζί μια μέρα γεμάτη χαρά,
+      <br>συγκίνηση και όμορφες στιγμές που θα μείνουν για πάντα στις καρδιές μας.</p>
   <p class="footer-year reveal d4">05.07.2026 &nbsp;·&nbsp; Λάρισα</p>
 </footer>
 
