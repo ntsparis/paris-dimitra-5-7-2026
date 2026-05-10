@@ -807,25 +807,25 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <div class="petal-div reveal d2"><span class="petal-icon">✿</span></div>
     <p class="sec-body reveal d2" style="margin-top:16px;">Παρακαλούμε δηλώστε συμμετοχή<br>έως τις <strong style="font-style:normal;color:var(--coral);">20 Ιουνίου 2026</strong>.</p>
 
-    <form class="rsvp-form reveal d3" onsubmit="rsvpSubmit(event)">
+    <form class="rsvp-form reveal d3" onsubmit="rsvpSubmit(event)" action="https://docs.google.com/forms/d/e/1FAIpQLScq7xkw9opg_fIq9z9NrMKXFhLaJ0ICHgcMqsrtrulojrEiag/formResponse" method="POST" target="hidden_iframe">
 
       <div class="rsvp-row">
         <div class="rsvp-field">
           <label>Ονοματεπώνυμο</label>
-          <input type="text" placeholder="Το όνομά σας" required>
+          <input type="text" name="entry.1413578392" placeholder="Το όνομά σας" required>
         </div>
         <div class="rsvp-field">
           <label>Τηλέφωνο</label>
-          <input type="tel" placeholder="69x xxx xxxx">
+          <input type="tel" name="entry.442714748" placeholder="69x xxx xxxx" required>
         </div>
       </div>
 
       <div class="rsvp-field">
         <label>Παρουσία</label>
         <div class="rsvp-attend">
-          <input type="radio" name="attend" id="r-yes" value="yes" checked>
+          <input type="radio" name="entry.109547292" id="r-yes" value="Θα είμαι εκεί" checked>
           <label for="r-yes"><span class="rsvp-radio-box"></span>Θα είμαι εκεί</label>
-          <input type="radio" name="attend" id="r-no" value="no">
+          <input type="radio" name="entry.109547292" id="r-no" value="Δεν μπορώ να παραστώ">
           <label for="r-no"><span class="rsvp-radio-box"></span>Δεν μπορώ να παραστώ</label>
         </div>
       </div>
@@ -833,7 +833,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <div class="rsvp-row">
         <div class="rsvp-field">
           <label>Αριθμός ατόμων</label>
-          <select>
+          <select id="rsvp-people">
             <option value="1">1 άτομο</option>
             <option value="2" selected>2 άτομα</option>
             <option value="3">3 άτομα</option>
@@ -843,13 +843,13 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
         </div>
         <div class="rsvp-field">
           <label>Διατροφικές ανάγκες</label>
-          <input type="text" placeholder="π.χ. χορτοφαγία…">
+          <input type="text" name="entry.1176884213" placeholder="π.χ. χορτοφαγία…">
         </div>
       </div>
 
       <div class="rsvp-field">
         <label>Μήνυμα <span style="font-family:'Caveat',cursive;font-size:14px;font-style:italic;text-transform:none;letter-spacing:0;color:var(--lt)">(προαιρετικό)</span></label>
-        <textarea placeholder="Κάτι που θέλετε να μας πείτε…"></textarea>
+        <textarea name="entry.566858147" placeholder="Κάτι που θέλετε να μας πείτε…"></textarea>
       </div>
 
       <div class="rsvp-submit">
@@ -858,6 +858,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       </div>
 
     </form>
+    <iframe name="hidden_iframe" style="display:none;" tabindex="-1" aria-hidden="true"></iframe>
   </div>
 </section>
 <div class="full-div"></div>
@@ -911,17 +912,50 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   ov.addEventListener('click',openEnvelope);
 })();
 
-// RSVP — placeholder until backend is wired
+// RSVP — submits to Google Forms via hidden iframe (no page redirect)
 function rsvpSubmit(e){
-  e.preventDefault();
-  var btn=e.target.querySelector('.rsvp-btn');
-  var notice=e.target.querySelector('.rsvp-notice');
-  btn.textContent='Ευχαριστούμε!';
-  btn.style.background='var(--sage)';
-  btn.style.borderColor='var(--sage)';
-  btn.style.color='#fff';
-  btn.disabled=true;
-  notice.textContent='Η απάντησή σας καταγράφηκε.';
+  var form=e.target;
+  var notice=form.querySelector('.rsvp-notice');
+
+  // Reset any previous error styling
+  notice.style.color='';
+
+  // Check internet — if offline, block submit and let user retry without losing data
+  if(!navigator.onLine){
+    e.preventDefault();
+    notice.textContent='Δεν υπάρχει σύνδεση στο internet. Παρακαλούμε δοκιμάστε ξανά μόλις επιστρέψει η σύνδεση.';
+    notice.style.color='var(--coral)';
+    return;
+  }
+
+  // Clean up any previously injected hidden inputs
+  form.querySelectorAll('.rsvp-hidden').forEach(function(n){n.remove();});
+
+  // People count: 1-5 = direct radio value, anything else = "Other"
+  var peopleVal=form.querySelector('#rsvp-people').value;
+  if(['1','2','3','4','5'].indexOf(peopleVal)>-1){
+    addHidden(form,'entry.1172473396',peopleVal);
+  } else {
+    addHidden(form,'entry.1172473396','__other_option__');
+    addHidden(form,'entry.1172473396.other_option_response',peopleVal);
+  }
+
+  // Let the form submit naturally to the hidden iframe (no preventDefault)
+  // Update UI optimistically
+  setTimeout(function(){
+    var btn=form.querySelector('.rsvp-btn');
+    btn.textContent='Ευχαριστούμε!';
+    btn.style.background='var(--sage)';
+    btn.style.borderColor='var(--sage)';
+    btn.style.color='#fff';
+    btn.disabled=true;
+    notice.textContent='Η απάντησή σας καταγράφηκε.';
+  },300);
+}
+function addHidden(form,name,value){
+  var i=document.createElement('input');
+  i.type='hidden';i.name=name;i.value=value;i.className='rsvp-hidden';
+  form.appendChild(i);
 }
 
 // Countdown
