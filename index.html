@@ -32,8 +32,13 @@
   --sage:#8B9E7A; --sage-light:#C5D4BC;
   --cream:#FDF6F0; --cream2:#F7EDE4; --dark:#3A2820; --mid:#7A5A4A; --lt:#A0806A;
 }
-*{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;overflow-x:hidden;}
 body{background:var(--cream);color:var(--dark);font-family:'Caveat','Cormorant Garamond',cursive,serif;overflow-x:hidden;}
+/* Reserve scrollbar gutter ONLY on desktop (non-touch). On mobile, scrollbars are overlay
+   so reserving a gutter would create empty space on the right and shift content visually. */
+@media (hover:hover) and (pointer:fine){
+  html{overflow-y:scroll;scrollbar-gutter:stable;}
+}
 /* Pause hero animations until envelope dismisses */
 body.env-loading .hero-pre,body.env-loading .hero-names,body.env-loading .hero-div,
 body.env-loading .hero-date,body.env-loading .hero-place,body.env-loading .scroll-cue{
