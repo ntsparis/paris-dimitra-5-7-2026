@@ -24,8 +24,11 @@
 <meta name="twitter:title" content="Παρασκευάς & Δήμητρα — 5 Ιουλίου 2026">
 <meta name="twitter:description" content="Σας προσκαλούμε στον γάμο μας — Κυριακή 5 Ιουλίου 2026, Λάρισα. ✿">
 <meta name="twitter:image" content="preview.jpg">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23C35040'/%3E%3Ccircle cx='16' cy='16' r='11.5' fill='none' stroke='rgba(253%2C230%2C214%2C.45)' stroke-width='1'/%3E%3Ctext x='16' y='20.5' text-anchor='middle' font-family='Georgia%2Cserif' font-size='10.5' font-weight='bold' fill='%23FDF6F0' letter-spacing='1'%3EΠ%7CΔ%3C%2Ftext%3E%3C%2Fsvg%3E"><link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23C35040'/%3E%3Ccircle cx='16' cy='16' r='11.5' fill='none' stroke='rgba(253%2C230%2C214%2C.45)' stroke-width='1'/%3E%3Ctext x='16' y='20.5' text-anchor='middle' font-family='Georgia%2Cserif' font-size='10.5' font-weight='bold' fill='%23FDF6F0' letter-spacing='1'%3EΠ%7CΔ%3C%2Ftext%3E%3C%2Fsvg%3E">
+<!-- Fonts are injected from JS at the bottom of <body> so a slow/offline network
+     never delays inline scripts (e.g. the envelope click handler). The <noscript>
+     fallback below keeps fonts working when JS is disabled. -->
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&display=swap"></noscript>
 <style>
 :root {
   --coral:#E07A5F; --peach:#F2A07B; --blush:#F5C4A8; --blush-light:#FAE5D6;
@@ -454,7 +457,9 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 <body>
 
 <!-- ENVELOPE OVERLAY -->
-<div id="env-overlay">
+<!-- Inline onclick/ontouchend are intentional fallbacks: they fire even if the
+     setup script below never runs (offline copies, restricted contexts, etc.). -->
+<div id="env-overlay" onclick="window.__envOpen&&window.__envOpen(event)" ontouchend="window.__envOpen&&window.__envOpen(event)" role="button" tabindex="0" aria-label="Άνοιγμα προσκλήσεως">
   <div id="env-scene">
     <!-- Envelope body — plain rectangle -->
     <div id="env-body"></div>
@@ -861,22 +866,28 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 </footer>
 
 <script>
-// Envelope intro
+// Envelope intro — MUST run first and must work offline. No external deps.
 (function(){
   var ov=document.getElementById('env-overlay');
+  if(!ov)return;
   var scene=document.getElementById('env-scene');
   var flap=document.getElementById('env-flap');
   var seal=document.getElementById('wax-seal');
-  if(!ov)return;
-  // Reset scroll to top and prevent browser from restoring position
   if('scrollRestoration' in history) history.scrollRestoration='manual';
   window.scrollTo(0,0);
   document.body.classList.add('env-loading');
   document.body.style.overflow='hidden';
-  var pulseTimer=setTimeout(function(){seal.classList.add('pulsing');},1400);
-  function openEnvelope(){
+  var pulseTimer=seal?setTimeout(function(){seal.classList.add('pulsing');},1400):null;
+  var dismissed=false;
+  function openEnvelope(e){
+    if(dismissed)return;
+    dismissed=true;
+    if(e&&e.preventDefault)try{e.preventDefault();}catch(_){}
     ov.removeEventListener('click',openEnvelope);
-    clearTimeout(pulseTimer);
+    ov.removeEventListener('pointerup',openEnvelope);
+    ov.removeEventListener('touchend',openEnvelope);
+    document.removeEventListener('keydown',keyOpen);
+    if(pulseTimer)clearTimeout(pulseTimer);
     var hint=document.getElementById('env-hint');
     if(hint){
       hint.style.opacity=getComputedStyle(hint).opacity;
@@ -884,20 +895,37 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       hint.style.transition='opacity 1.4s ease';
       requestAnimationFrame(function(){hint.style.opacity='0';});
     }
-    seal.classList.remove('pulsing');
-    seal.classList.add('cracking');
-    setTimeout(function(){flap.classList.add('open');},200);
+    if(seal){seal.classList.remove('pulsing');seal.classList.add('cracking');}
+    if(flap)setTimeout(function(){flap.classList.add('open');},200);
     setTimeout(function(){
       ov.classList.add('dismissing');
-      scene.classList.add('zooming');
+      if(scene)scene.classList.add('zooming');
     },780);
     setTimeout(function(){
-      ov.remove();
+      if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);
       document.body.style.overflow='';
       document.body.classList.remove('env-loading');
     },1680);
   }
+  function keyOpen(e){
+    if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'||e.key==='Escape')openEnvelope(e);
+  }
+  // Expose for the inline onclick/ontouchend fallback on #env-overlay.
+  window.__envOpen=openEnvelope;
   ov.addEventListener('click',openEnvelope);
+  ov.addEventListener('pointerup',openEnvelope);
+  ov.addEventListener('touchend',openEnvelope);
+  document.addEventListener('keydown',keyOpen);
+})();
+
+// Load Google Fonts AFTER the envelope is wired up, so a slow/offline network
+// can never delay the click handler. Fonts are progressive enhancement —
+// the page renders fine with the system serif fallback.
+(function(){
+  var l=document.createElement('link');
+  l.rel='stylesheet';
+  l.href='https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Great+Vibes&display=swap';
+  document.head.appendChild(l);
 })();
 
 // RSVP — submits to Google Forms via hidden iframe (no page redirect)
@@ -991,6 +1019,10 @@ drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeD));
   pmTick();
 })();
 
+// Service Worker — caches page + photos for offline use
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').catch(function(){});
+}
 </script>
 </body>
 </html>
