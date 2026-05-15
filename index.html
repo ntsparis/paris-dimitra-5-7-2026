@@ -158,8 +158,8 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 
 /* PROGRAM SPLIT */
 .program-split{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;min-height:auto;}
-.program-img{position:relative;overflow:hidden;background:transparent;min-height:520px;}
-.program-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.program-img{overflow:hidden;background:transparent;}
+.program-img img{width:100%;height:auto;display:block;}
 .program-text{padding:86px 48px 72px;display:flex;flex-direction:column;justify-content:flex-start;background:var(--cream2);}
 .program-text .sec-tag{text-align:center;margin-bottom:18px;}
 .program-text .sec-heading{text-align:center;}
@@ -168,7 +168,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 @media(max-width:600px){.program-split{grid-template-columns:1fr;}.program-img{min-height:300px;}.program-text{padding:40px 28px;}.program-text .sec-tag,.program-text .sec-heading{text-align:center;}.program-text .petal-div{margin:0 auto;}}
 
 /* TIMELINE */
-#program{background:var(--cream2);padding:60px 0;}
+#program{background:var(--cream2);padding:60px 32px;}
 .timeline{margin-top:54px;position:relative;max-width:640px;margin-left:auto;margin-right:auto;}
 .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--blush) 8%,var(--blush) 92%,transparent);transform:translateX(-50%);}
 .tl-item{display:grid;grid-template-columns:1fr 40px 1fr;align-items:start;margin-bottom:50px;}
@@ -275,13 +275,13 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 
 /* ΠΙΚΑΝΤΙΚΕΣ */
 #pikantikes{background:var(--cream);overflow:hidden;}
-.pik-split{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:580px;padding-bottom:60px;}
+.pik-split{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:start;padding-bottom:60px;}
 .pik-content{padding:86px 44px;display:flex;flex-direction:column;justify-content:center;text-align:center;background:var(--cream);}
 .pik-content .sec-tag,.pik-content .sec-heading{text-align:center;}
 .pik-content .sec-heading{font-size:clamp(28px,4vw,46px);}
-.pik-photo{position:relative;overflow:hidden;background:transparent;}
-.pik-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
-@media(max-width:768px){.pik-split{grid-template-columns:1fr;min-height:auto;}.pik-content{padding:60px 28px;text-align:center;}.pik-content .sec-tag,.pik-content .sec-heading{text-align:center;}.pik-content .petal-div{margin:0 auto;}.pik-photo{aspect-ratio:4/5;}}
+.pik-photo{background:transparent;padding:40px 24px 40px 0;}
+.pik-photo img{width:100%;height:auto;display:block;}
+@media(max-width:768px){.pik-split{grid-template-columns:1fr;min-height:auto;}.pik-content{padding:60px 28px;text-align:center;}.pik-content .sec-tag,.pik-content .sec-heading{text-align:center;}.pik-content .petal-div{margin:0 auto;}.pik-photo{padding:0 24px 32px;aspect-ratio:unset;}}
 .pik-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;text-align:left;}
 @media(max-width:768px){.pik-grid{grid-template-columns:1fr;}}
 .pik-card{padding:26px 22px;border-top:2px solid var(--blush);background:var(--cream2);position:relative;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;}
@@ -626,7 +626,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       </div>
     </div>
     <div class="pik-photo reveal-right d2">
-      <img src="photos/IMG_2.jpg" alt="Παρασκευάς & Δήμητρα">
+      <img src="photos/IMG_1.jpg" alt="Παρασκευάς & Δήμητρα">
     </div>
   </div>
 </section>
@@ -670,7 +670,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 <section id="program">
   <div class="program-split">
     <div class="program-img reveal-left">
-      <img src="photos/IMG_1.jpg" alt="Πρόγραμμα Ημέρας">
+      <img src="photos/IMG_2.jpg" alt="Πρόγραμμα Ημέρας">
     </div>
     <div class="program-text reveal-right d1">
       <p class="sec-tag">Πρόγραμμα Ημέρας</p>
