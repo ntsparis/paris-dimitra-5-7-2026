@@ -90,7 +90,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .c-tl{top:-8px;left:-8px;width:220px;} .c-tr{top:-8px;right:-8px;width:220px;transform:scaleX(-1);}
 .c-bl{bottom:-8px;left:-8px;width:180px;transform:scaleY(-1);} .c-br{bottom:-8px;right:-8px;width:180px;transform:rotate(180deg);}
 .hero-inner{position:relative;z-index:1;max-width:920px;width:100%;}
-.hero-pre{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);margin-bottom:36px;opacity:0;animation:fadeUp .65s ease forwards .15s;}
+.hero-pre{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:20px;font-style:italic;color:var(--peach);margin-bottom:36px;opacity:0;animation:fadeUp .65s ease forwards .15s;}
 .hero-names{font-family:'Caveat','Caveat','Cormorant Garamond',cursive,serif;font-size:48px;font-weight:500;line-height:1.05;color:var(--dark);letter-spacing:0;opacity:0;animation:fadeUp .75s ease forwards .3s;padding:0 8px;-webkit-hyphens:none;hyphens:none;white-space:nowrap;}
 @media(max-width:380px){.hero-names{white-space:normal;font-size:42px;}}
 @media(min-width:480px){.hero-names{font-size:64px;}}
@@ -105,19 +105,6 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn .7s ease forwards 1.3s;}
 .scroll-cue span{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--peach);}
 .scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--coral),transparent);animation:pulse 2s ease-in-out infinite;}
-
-/* COUPLE PHOTO SPLIT */
-#couple-photo{background:var(--cream2);overflow:hidden;}
-.couple-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.15fr 1fr;min-height:560px;}
-@media(max-width:600px){.couple-wrap{grid-template-columns:1fr;}}
-.photo-placeholder{background:transparent;position:relative;overflow:hidden;min-height:620px;}
-@media(max-width:600px){.photo-placeholder{min-height:420px;}}
-.photo-placeholder img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
-.couple-text{padding:56px 44px;display:flex;flex-direction:column;justify-content:center;background:var(--cream2);}
-@media(max-width:600px){.couple-text{padding:40px 28px;}}
-.couple-text .sec-tag{font-family:'Caveat','Caveat','Cormorant Garamond',cursive,serif;font-size:38px;font-weight:500;text-transform:none;letter-spacing:0;text-align:left;margin-bottom:14px;color:var(--coral);}
-.couple-text .sec-heading{text-align:left;font-size:clamp(28px,4vw,44px);margin-bottom:18px;}
-.couple-text p{font-size:19px;line-height:1.85;color:var(--mid);font-style:italic;}
 
 /* COUNTDOWN — cream */
 #countdown{background:var(--cream2);padding:68px 24px;text-align:center;border-top:1px solid var(--blush-light);border-bottom:1px solid var(--blush-light);}
@@ -169,8 +156,19 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .koumparos-name{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:30px;font-weight:400;font-style:italic;color:var(--dark);}
 .koumparos-role{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);margin-top:6px;}
 
+/* PROGRAM SPLIT */
+.program-split{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;min-height:auto;}
+.program-img{position:relative;overflow:hidden;background:transparent;min-height:520px;}
+.program-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.program-text{padding:86px 48px 72px;display:flex;flex-direction:column;justify-content:flex-start;background:var(--cream2);}
+.program-text .sec-tag{text-align:center;margin-bottom:18px;}
+.program-text .sec-heading{text-align:center;}
+.program-text .petal-div{margin:0 auto;}
+.program-text .timeline{margin-top:32px;max-width:100%;}
+@media(max-width:600px){.program-split{grid-template-columns:1fr;}.program-img{min-height:300px;}.program-text{padding:40px 28px;}.program-text .sec-tag,.program-text .sec-heading{text-align:center;}.program-text .petal-div{margin:0 auto;}}
+
 /* TIMELINE */
-#program{background:var(--cream2);}
+#program{background:var(--cream2);padding:60px 0;}
 .timeline{margin-top:54px;position:relative;max-width:640px;margin-left:auto;margin-right:auto;}
 .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--blush) 8%,var(--blush) 92%,transparent);transform:translateX(-50%);}
 .tl-item{display:grid;grid-template-columns:1fr 40px 1fr;align-items:start;margin-bottom:50px;}
@@ -275,12 +273,10 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 @media(max-width:600px){.pm-pic{min-height:280px;}}
 
 /* ΠΙΚΑΝΤΙΚΕΣ */
-#pikantikes{background:var(--cream);}
-/* Pikantikes split layout (matches couple-photo style) */
 #pikantikes{background:var(--cream);overflow:hidden;}
 .pik-split{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:580px;padding-bottom:60px;}
-.pik-content{padding:86px 44px;display:flex;flex-direction:column;justify-content:center;text-align:left;background:var(--cream);}
-.pik-content .sec-tag,.pik-content .sec-heading{text-align:left;}
+.pik-content{padding:86px 44px;display:flex;flex-direction:column;justify-content:center;text-align:center;background:var(--cream);}
+.pik-content .sec-tag,.pik-content .sec-heading{text-align:center;}
 .pik-content .sec-heading{font-size:clamp(28px,4vw,46px);}
 .pik-photo{position:relative;overflow:hidden;background:transparent;}
 .pik-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
@@ -586,18 +582,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   <div class="scroll-cue"><div class="scroll-line"></div><span>Κύλιση</span></div>
 </section>
 
-<!-- COUPLE PHOTO -->
-<div id="couple-photo">
-  <div class="couple-wrap">
-    <div class="photo-placeholder" id="ph-couple">
-      <img src="photos/IMG_1.jpg" alt="Παρασκευάς & Δήμητρα">
-    </div>
-    <div class="couple-text reveal d1">
-      <p class="sec-tag">Η αγάπη μας<br>γίνεται υπόσχεση</p>
-      <p>Γνωριστήκαμε σε ένα μονοπάτι της Πάρνηθας, ανάμεσα στα δέντρα και τη φύση, κατά τη διάρκεια μιας πεζοπορίας. Μια συνάντηση που ίσως να μην είχε συμβεί ποτέ, αν οι φίλοι μας δεν είχαν φροντίσει να μας γνωρίσουν. Από την πρώτη στιγμή υπήρξε κάτι ξεχωριστό…</p>
-    </div>
-  </div>
-</div>
 
 <!-- COUNTDOWN -->
 <div id="countdown">
@@ -674,30 +658,35 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 
 <!-- PROGRAM -->
 <section id="program">
-  <div class="section">
-    <p class="sec-tag reveal">Πρόγραμμα Ημέρας</p>
-    <h2 class="sec-heading reveal d1">Τι θα γίνει στις<br>5 Ιουλίου</h2>
-    <div class="petal-div reveal d2"><span class="petal-icon">✿</span></div>
-    <div class="timeline">
-      <div class="tl-item reveal-left d1">
-        <div class="tl-cell left has-content"><p class="tl-time">Πρωί</p><p class="tl-title">Ετοιμασία Νύφης</p><p class="tl-sub">Πλατύκαμπος<br>Λάρισα</p></div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-cell right is-empty"></div>
-      </div>
-      <div class="tl-item reveal-right d1">
-        <div class="tl-cell left is-empty"></div>
-        <div class="tl-dot-col"><div class="tl-dot sage"></div></div>
-        <div class="tl-cell right has-content"><p class="tl-time">Απόγευμα</p><p class="tl-title">Ετοιμασία Γαμπρού</p><p class="tl-sub">Comfort Suites <span class="amp">&amp;</span> Rooms</p></div>
-      </div>
-      <div class="tl-item reveal-left d1">
-        <div class="tl-cell left has-content"><p class="tl-time">20:00</p><p class="tl-title">Θρησκευτική Τελετή</p><p class="tl-sub">Ιερός Ναός Προφήτη Ηλία<br>Λάρισα</p></div>
-        <div class="tl-dot-col"><div class="tl-dot"></div></div>
-        <div class="tl-cell right is-empty"></div>
-      </div>
-      <div class="tl-item reveal-right d1">
-        <div class="tl-cell left is-empty"></div>
-        <div class="tl-dot-col"><div class="tl-dot peach"></div></div>
-        <div class="tl-cell right has-content"><p class="tl-time">~21:00</p><p class="tl-title">Δεξίωση</p><p class="tl-sub">Κτήμα Έλενα<br>Αμπελώνας, Λάρισα</p></div>
+  <div class="program-split">
+    <div class="program-img reveal-left">
+      <img src="photos/IMG_1.jpg" alt="Πρόγραμμα Ημέρας">
+    </div>
+    <div class="program-text reveal-right d1">
+      <p class="sec-tag">Πρόγραμμα Ημέρας</p>
+      <h2 class="sec-heading">Τι θα γίνει στις<br>5 Ιουλίου</h2>
+      <div class="petal-div"><span class="petal-icon">✿</span></div>
+      <div class="timeline">
+        <div class="tl-item reveal-left d1">
+          <div class="tl-cell left has-content"><p class="tl-time">Πρωί</p><p class="tl-title">Ετοιμασία Νύφης</p><p class="tl-sub">Πλατύκαμπος<br>Λάρισα</p></div>
+          <div class="tl-dot-col"><div class="tl-dot"></div></div>
+          <div class="tl-cell right is-empty"></div>
+        </div>
+        <div class="tl-item reveal-right d1">
+          <div class="tl-cell left is-empty"></div>
+          <div class="tl-dot-col"><div class="tl-dot sage"></div></div>
+          <div class="tl-cell right has-content"><p class="tl-time">Απόγευμα</p><p class="tl-title">Ετοιμασία Γαμπρού</p><p class="tl-sub">Comfort Suites <span class="amp">&amp;</span> Rooms</p></div>
+        </div>
+        <div class="tl-item reveal-left d1">
+          <div class="tl-cell left has-content"><p class="tl-time">20:00</p><p class="tl-title">Θρησκευτική Τελετή</p><p class="tl-sub">Ιερός Ναός Προφήτη Ηλία<br>Λάρισα</p></div>
+          <div class="tl-dot-col"><div class="tl-dot"></div></div>
+          <div class="tl-cell right is-empty"></div>
+        </div>
+        <div class="tl-item reveal-right d1">
+          <div class="tl-cell left is-empty"></div>
+          <div class="tl-dot-col"><div class="tl-dot peach"></div></div>
+          <div class="tl-cell right has-content"><p class="tl-time">~21:30</p><p class="tl-title">Δεξίωση</p><p class="tl-sub">Κτήμα Έλενα<br>Αμπελώνας, Λάρισα</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -717,9 +706,9 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <span class="time-pill">20:00</span>
     </div>
     <div class="map-wrap reveal d4">
-      <iframe src="https://maps.google.com/maps?q=39.624209433992135,22.412992789007987&z=18&output=embed" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d768.283648565962!2d22.41174288719529!3d39.62417321735724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135888b0c0555555%3A0x4367898785d9bce1!2zzpnOtc-Bz4zPgiDOnc6xz4zPgiDOoM-Bzr_Phs6uz4TOtyDOl867zq_OsQ!5e0!3m2!1sen!2sgr!4v1778827504481!5m2!1sen!2sgr" allowfullscreen loading="lazy"></iframe>
     </div>
-    <a class="map-btn reveal d5" href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%A0%CF%81%CE%BF%CF%86%CE%AE%CF%84%CE%B7+%CE%97%CE%BB%CE%AF%CE%B1/@39.624209433992135,22.412992789007987,18z/data=!4m6!3m5!1s0x135888b0c0555555:0x4367898785d9bce1!8m2!3d39.624209433992135!4d22.412992789007987" target="_blank">
+    <a class="map-btn reveal d5" href="https://maps.app.goo.gl/KbYsxijfivke2VKr9" target="_blank">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
       Άνοιγμα στο Google Maps
     </a>
@@ -737,7 +726,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <div class="loc-badge reveal d3">
       <span class="loc-name">Κτήμα Έλενα</span>
       <span class="loc-sub">Αμπελώνας, Λάρισα</span>
-      <span class="time-pill">~21:00</span>
+      <span class="time-pill">~21:30</span>
     </div>
     <div class="map-wrap reveal d4">
       <iframe src="https://maps.google.com/maps?q=Ktima+Elena,+Ampelonas,+Larissa,+Greece&z=15&output=embed" allowfullscreen loading="lazy"></iframe>
