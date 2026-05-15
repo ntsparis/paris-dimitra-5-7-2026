@@ -193,6 +193,7 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 
 /* CEREMONY / RECEPTION */
 #ceremony{background:var(--cream);}
+#ceremony-fw{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;}
 #reception{background:var(--cream2);}
 .loc-badge{display:inline-flex;flex-direction:column;gap:6px;margin-top:26px;padding:20px 32px;border:1px solid var(--blush);background:rgba(253,246,240,.6);}
 .loc-name{font-family:'Caveat','Cormorant Garamond',cursive,serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dark);}
@@ -702,6 +703,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 </section>
 <div class="full-div"></div>
 
+<canvas id="ceremony-fw" aria-hidden="true"></canvas>
 <!-- CEREMONY -->
 <section id="ceremony">
   <div class="section">
@@ -869,6 +871,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       requestAnimationFrame(function(){hint.style.opacity='0';});
     }
     if(seal){seal.classList.remove('pulsing');seal.classList.add('cracking');}
+    if(window.__launchFireworks) window.__launchFireworks();
     if(flap)setTimeout(function(){flap.classList.add('open');},200);
     setTimeout(function(){
       ov.classList.add('dismissing');
@@ -990,6 +993,111 @@ drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeD));
   }
   window.addEventListener('scroll',pmTick,{passive:true});
   pmTick();
+})();
+
+// Gold fireworks — optimised with typed arrays + batch rendering
+(function(){
+  var canvas=document.getElementById('ceremony-fw');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+
+  var COLORS=['#FFD700','#FFC200','#FFE680','#E8B84B','#FFF0A0','#C9941A','#FFECB3','#FFD060','#F0C040'];
+  var NC=COLORS.length;
+  var BANDS=8; // alpha quantisation — groups nearby-alpha particles into one draw call
+
+  // Fixed-size typed arrays — zero GC pressure during animation
+  var MAX=1100;
+  var X  =new Float32Array(MAX);
+  var Y  =new Float32Array(MAX);
+  var VX =new Float32Array(MAX);
+  var VY =new Float32Array(MAX);
+  var AL =new Float32Array(MAX); // alpha
+  var DC =new Float32Array(MAX); // decay
+  var SZ =new Float32Array(MAX); // size
+  var CI =new Uint8Array(MAX);   // color index
+  var n=0;
+
+  // Pre-allocated bucket arrays — no allocation inside loop
+  var buckets=[];
+  for(var c=0;c<NC;c++){buckets[c]=[];for(var b=0;b<BANDS;b++)buckets[c][b]=[];}
+
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize();
+
+  function addBurst(x,y,ci,count){
+    for(var i=0;i<count&&n<MAX;i++,n++){
+      var a=Math.random()*6.2832,sp=Math.random()*7+2;
+      X[n]=x;Y[n]=y;
+      VX[n]=Math.cos(a)*sp;
+      VY[n]=Math.sin(a)*sp-3;
+      AL[n]=1;
+      DC[n]=Math.random()*0.01+0.006;
+      SZ[n]=Math.random()*2.5+0.8;
+      CI[n]=ci;
+    }
+  }
+
+  var animId=null,prevTime=0;
+
+  function loop(now){
+    var dt=Math.min((now-prevTime)/16.67,2.5);
+    prevTime=now;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Clear buckets (reuse arrays, no allocation)
+    for(var c=0;c<NC;c++)for(var b=0;b<BANDS;b++)buckets[c][b].length=0;
+
+    // Update all particles and sort into (color × alpha-band) buckets
+    var alive=0;
+    for(var i=0;i<n;i++){
+      AL[i]-=DC[i]*dt;
+      if(AL[i]<=0)continue;
+      VY[i]+=0.1*dt;
+      VX[i]*=1-0.015*dt;
+      X[i]+=VX[i]*dt;
+      Y[i]+=VY[i]*dt;
+      buckets[CI[i]][Math.min(BANDS-1,AL[i]*BANDS|0)].push(i);
+      alive++;
+    }
+
+    // Draw: one beginPath+fill per (color, band) — max 72 draw calls total
+    for(var c=0;c<NC;c++){
+      ctx.fillStyle=COLORS[c];
+      for(var b=0;b<BANDS;b++){
+        var bkt=buckets[c][b];
+        if(!bkt.length)continue;
+        ctx.globalAlpha=(b+0.5)/BANDS;
+        ctx.beginPath();
+        for(var j=0;j<bkt.length;j++){
+          var idx=bkt[j];
+          ctx.moveTo(X[idx]+SZ[idx],Y[idx]);
+          ctx.arc(X[idx],Y[idx],SZ[idx],0,6.2832);
+        }
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha=1;
+
+    if(alive>0){animId=requestAnimationFrame(loop);}
+    else{animId=null;n=0;}
+  }
+
+  window.__launchFireworks=function(){
+    resize();n=0;
+    var W=canvas.width,H=canvas.height;
+    var pts=[
+      [W*.1,H*.3],[W*.25,H*.15],[W*.5,H*.08],[W*.75,H*.15],[W*.9,H*.3],
+      [W*.2,H*.55],[W*.5,H*.42],[W*.8,H*.55],[W*.35,H*.28],[W*.65,H*.28]
+    ];
+    pts.forEach(function(p,i){
+      setTimeout(function(){
+        addBurst(p[0],p[1],i%NC,110);
+        if(!animId){prevTime=performance.now();animId=requestAnimationFrame(loop);}
+      },i*180);
+    });
+  };
+
+  window.addEventListener('resize',resize,{passive:true});
 })();
 
 // Service Worker — caches page + photos for offline use
