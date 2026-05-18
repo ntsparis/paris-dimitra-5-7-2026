@@ -812,6 +812,9 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   window.scrollTo(0,0);
   document.body.classList.add('env-loading');
   document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.width='100%';
+  document.body.style.top='0';
   var pulseTimer=seal?setTimeout(function(){seal.classList.add('pulsing');},1400):null;
   var dismissed=false;
   function openEnvelope(e){
@@ -840,6 +843,9 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     setTimeout(function(){
       if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);
       document.body.style.overflow='';
+      document.body.style.position='';
+      document.body.style.width='';
+      document.body.style.top='';
       document.body.classList.remove('env-loading');
     },1680);
   }
