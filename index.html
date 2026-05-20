@@ -113,6 +113,17 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .scroll-cue span{font-family:'Caveat','Cormorant Garamond',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--peach);}
 .scroll-line{width:1px;height:38px;background:linear-gradient(to bottom,var(--coral),transparent);animation:pulse 2s ease-in-out infinite;}
 
+/* POEM SECTION */
+#poem-section{background:var(--cream2);}
+.poem-split{max-width:960px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1fr;align-items:center;}
+.poem-split-img{padding:48px 16px 48px 40px;}
+.poem-split-img img{width:100%;height:auto;display:block;}
+@media(max-width:700px){.poem-split{grid-template-columns:1fr;}.poem-split-img{padding:0 24px 32px;}}
+.poem-split-text{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;text-align:center;}
+.poem-split-text .petal-div{margin:0 auto 28px;}
+.poem-line{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2vw,22px);font-weight:300;font-style:italic;color:var(--mid);line-height:2;letter-spacing:.015em;}
+@media(max-width:700px){.poem-split-text{padding:32px 28px 52px;}}
+
 /* COUNTDOWN — cream */
 #countdown{background:var(--cream2);padding:68px 24px;text-align:center;border-top:1px solid var(--blush-light);border-bottom:1px solid var(--blush-light);}
 .cd-label{font-family:'Caveat','Cormorant Garamond',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);margin-bottom:40px;}
@@ -598,7 +609,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   <div class="scroll-cue"><div class="scroll-line"></div><span>Κύλιση</span></div>
 </section>
 
-
 <!-- COUNTDOWN -->
 <div id="countdown">
   <p class="cd-label reveal">Μετράμε αντίστροφα για τη μεγάλη μέρα, σας περιμένουμε να τη ζήσουμε μαζί</p>
@@ -612,6 +622,25 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <div class="cd-item"><span class="cd-num" id="cd-s">--</span><span class="cd-unit">Δευτερόλεπτα</span></div>
   </div>
 </div>
+<div class="full-div"></div>
+
+<!-- POEM SECTION -->
+<section id="poem-section">
+  <div class="poem-split">
+    <div class="poem-split-img reveal-left d1">
+      <img src="photos/IMG_3.jpg" alt="Παρασκευάς &amp; Δήμητρα">
+    </div>
+    <div class="poem-split-text reveal-right d2">
+      <div class="petal-div"><span class="petal-icon">✿</span></div>
+      <p class="poem-line">Με την πίστη να οδηγεί τον δρόμο μας</p>
+      <p class="poem-line">και την καρδιά στον ουρανό,</p>
+      <p class="poem-line">Ξεκινάμε μαζί το πιό όμορφο ταξίδι της ζωής μας.</p>
+      <div class="petal-div" style="margin:24px auto;max-width:200px;"><span class="petal-icon">✿</span></div>
+      <p class="poem-line">Η παρουσία σας, μια ευχή και ένα χαμόγελο</p>
+      <p class="poem-line">θα γίνουν κομμάτι του δικού μας καλοκαιρινού ονείρου.</p>
+    </div>
+  </div>
+</section>
 <div class="full-div"></div>
 
 <!-- ΠΙΚΑΝΤΙΚΕΣ -->
