@@ -197,7 +197,6 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .tl-dot{width:13px;height:13px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:7px;box-shadow:0 0 0 5px var(--cream2),0 0 0 7px var(--blush);transition:transform .3s;}
 .tl-dot:hover{transform:scale(1.4);}
 .tl-dot.sage{background:var(--sage);box-shadow:0 0 0 5px var(--cream2),0 0 0 7px var(--sage-light);}
-.tl-dot.peach{background:var(--peach);box-shadow:0 0 0 5px var(--cream2),0 0 0 7px rgba(242,160,123,.35);}
 .tl-time{font-family:'Caveat','Cormorant Garamond',serif;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:8px;font-weight:500;}
 .tl-title{font-family:'Caveat','Cormorant Garamond',serif;font-size:21px;font-weight:500;color:var(--dark);margin-bottom:4px;line-height:1.2;}
 .tl-sub{font-size:14px;color:var(--lt);font-style:italic;line-height:1.5;}
@@ -259,8 +258,15 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .rsvp-attend label{font-family:'Caveat','Cormorant Garamond',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);cursor:pointer;display:flex;align-items:center;gap:10px;margin-bottom:0;}
 .rsvp-attend input[type=radio]{display:none;}
 .rsvp-radio-box{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--blush);flex-shrink:0;transition:all .25s;position:relative;}
-.rsvp-attend input[type=radio]:checked+label .rsvp-radio-box{border-color:var(--coral);background:var(--coral);}
-.rsvp-attend input[type=radio]:checked+label{color:var(--coral);}
+/* Παρουσία: animated underline για και τις δύο επιλογές */
+.rsvp-label-text{position:relative;display:inline-block;}
+.rsvp-label-text::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:currentColor;transition:width .45s cubic-bezier(.4,0,.2,1);}
+#r-yes:checked+label .rsvp-radio-box{border-color:var(--sage);background:var(--sage);box-shadow:0 0 0 3px rgba(139,158,122,.18);}
+#r-yes:checked+label{color:var(--sage);}
+#r-yes:checked+label .rsvp-label-text::after{width:100%;}
+#r-no:checked+label .rsvp-radio-box{border-color:var(--coral);background:var(--coral);}
+#r-no:checked+label{color:var(--coral);}
+#r-no:checked+label .rsvp-label-text::after{width:100%;}
 .rsvp-submit{margin-top:10px;text-align:center;}
 .rsvp-btn{display:inline-block;padding:16px 52px;background:transparent;border:1px solid var(--coral);font-family:'Caveat','Cormorant Garamond',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);cursor:pointer;transition:all .35s ease;}
 .rsvp-btn:hover{background:var(--coral);color:#fff;}
@@ -713,22 +719,22 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <div class="timeline">
         <div class="tl-item reveal-right d1">
           <div class="tl-cell left is-empty"></div>
-          <div class="tl-dot-col"><div class="tl-dot sage"></div></div>
+          <div class="tl-dot-col"><div class="tl-dot sage"></div></div><!-- step 1: σκούρο πράσινο -->
           <div class="tl-cell right has-content"><p class="tl-time">17:00</p><p class="tl-title">Ετοιμασία Γαμπρού</p><p class="tl-sub">Comfort Suites <span class="amp">&amp;</span> Rooms</p><a class="tl-loc" href="https://maps.app.goo.gl/n4M2K1eX2SpGBNHn7" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Χάρτης</a></div>
         </div>
         <div class="tl-item reveal-left d1">
           <div class="tl-cell left has-content"><p class="tl-time">17:30</p><p class="tl-title">Ετοιμασία Νύφης</p><p class="tl-sub">Γαλήνη, Λάρισα</p><a class="tl-loc" href="https://www.google.com/maps?q=39.628391,22.517733" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Χάρτης</a></div>
-          <div class="tl-dot-col"><div class="tl-dot"></div></div>
+          <div class="tl-dot-col"><div class="tl-dot sage"></div></div><!-- step 2: πράσινο -->
           <div class="tl-cell right is-empty"></div>
         </div>
         <div class="tl-item reveal-right d1">
           <div class="tl-cell left is-empty"></div>
-          <div class="tl-dot-col"><div class="tl-dot"></div></div>
+          <div class="tl-dot-col"><div class="tl-dot sage"></div></div><!-- step 3: ανοιχτό πράσινο -->
           <div class="tl-cell right has-content"><p class="tl-time">20:00</p><p class="tl-title">Θρησκευτική Τελετή</p><p class="tl-sub">Ιερός Ναός Προφήτη Ηλία<br>Λάρισα</p><a class="tl-loc" href="https://maps.app.goo.gl/KbYsxijfivke2VKr9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Χάρτης</a></div>
         </div>
         <div class="tl-item reveal-left d1">
           <div class="tl-cell left has-content"><p class="tl-time">~21:30</p><p class="tl-title">Δεξίωση</p><p class="tl-sub">Κτήμα Έλενα<br>Αμπελώνας, Λάρισα</p><a class="tl-loc" href="https://maps.app.goo.gl/kBYpkkXejBkeECf67" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Χάρτης</a></div>
-          <div class="tl-dot-col"><div class="tl-dot peach"></div></div>
+          <div class="tl-dot-col"><div class="tl-dot sage"></div></div><!-- step 4: παλ πράσινο — δεξίωση -->
           <div class="tl-cell right is-empty"></div>
         </div>
       </div>
@@ -749,7 +755,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <div class="qa-card reveal-left d1"><p class="qa-q">Μπορώ να φέρω συνοδό;</p><p class="qa-a">Εννοείται, αρκεί να τον/την προσθέσετε στη δήλωση συμμετοχής.</p></div>
       <div class="qa-card reveal-right d2"><p class="qa-q">Που να παρκάρω;</p><p class="qa-a">Για την εκκλησία υπάρχει χώρος στάθμευσης στη γύρω περιοχή, σίγουρα θα βρείτε θέση στα κοντινά στενά. Όσον αφορά το κτήμα, διαθέτει μεγάλο χώρο στάθμευσης εντός του χώρου.</p></div>
       <div class="qa-card reveal-left d2"><p class="qa-q">Θα γίνει μέσα ή έξω;</p><p class="qa-a">Η τελετή θα πραγματοποιηθεί μέσα στην εκκλησία, ενώ η δεξίωση θα γίνει σε εξωτερικό χώρο. Μην ανησυχείτε ακόμα κι αν βρέξει, τα έχουμε προβλέψει όλα… και ο χορός θα κρατήσει μέχρι το πρωί!</p></div>
-      <div class="qa-card reveal-right d3"><p class="qa-q">Υπάρχει WiFi στον χώρο;</p><p class="qa-a">Φυσικά, ο κωδικός θα υπάρχει επάνω σε κάθε τραπέζι!</p></div>
     </div>
   </div>
 </section>
@@ -779,9 +784,9 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
         <label>Παρουσία</label>
         <div class="rsvp-attend">
           <input type="radio" name="entry.109547292" id="r-yes" value="Θα είμαι εκεί" checked>
-          <label for="r-yes"><span class="rsvp-radio-box"></span>Θα είμαι εκεί</label>
+          <label for="r-yes"><span class="rsvp-radio-box"></span><span class="rsvp-label-text">Θα είμαι εκεί</span></label>
           <input type="radio" name="entry.109547292" id="r-no" value="Δεν μπορώ να παραστώ">
-          <label for="r-no"><span class="rsvp-radio-box"></span>Δεν μπορώ να παραστώ</label>
+          <label for="r-no"><span class="rsvp-radio-box"></span><span class="rsvp-label-text">Δεν μπορώ να παραστώ</span></label>
         </div>
       </div>
 
