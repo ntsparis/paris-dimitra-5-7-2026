@@ -909,10 +909,10 @@ function rsvpSubmit(e){
     return;
   }
 
-  // Clean up any previously injected hidden inputs
+  // Clean up previously injected hidden inputs
   form.querySelectorAll('.rsvp-hidden').forEach(function(n){n.remove();});
 
-  // People count: 1-5 = direct radio value, anything else = "Other"
+  // People count
   var peopleVal=form.querySelector('#rsvp-people').value;
   if(['1','2','3','4','5'].indexOf(peopleVal)>-1){
     addHidden(form,'entry.1172473396',peopleVal);
@@ -921,7 +921,6 @@ function rsvpSubmit(e){
     addHidden(form,'entry.1172473396.other_option_response',peopleVal);
   }
 
-  // Let the form submit naturally to the hidden iframe (no preventDefault)
   // Update UI optimistically
   setTimeout(function(){
     var btn=form.querySelector('.rsvp-btn');
