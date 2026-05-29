@@ -1,7 +1,16 @@
-var CACHE = 'pd-v1';
+var CACHE = 'pd-v2';
 var ASSETS = [
   './',
   './index.html',
+  './fonts/caveat-latin.woff2',
+  './fonts/caveat-latin-ext.woff2',
+  './fonts/cg-normal-latin.woff2',
+  './fonts/cg-normal-latin-ext.woff2',
+  './fonts/cg-italic-latin.woff2',
+  './fonts/cg-italic-latin-ext.woff2',
+  './fonts/great-vibes-latin.woff2',
+  './fonts/great-vibes-latin-ext.woff2',
+  './fonts/great-vibes-greek-ext.woff2',
   './photos/IMG_1.jpg',
   './photos/IMG_2.jpg',
   './photos/IMG_3.jpg'
