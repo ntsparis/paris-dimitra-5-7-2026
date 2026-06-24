@@ -483,6 +483,60 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 @keyframes spk70 {0%,25%{opacity:0}50%{opacity:.7} 75%,100%{opacity:0}}
 @keyframes spk65 {0%,25%{opacity:0}50%{opacity:.65}75%,100%{opacity:0}}
 /* ══════════════════════════════════════════════════════════════ */
+
+
+/* ─── SEATING CHART ─────────────────────────────────────────── */
+#seating-section{display:block;}
+#seating{background:var(--cream2);padding:56px 24px 40px;}
+#seating .section{padding:0 32px 28px;}
+.sec-sub{font-size:18px;font-style:italic;color:var(--mid);line-height:1.7;max-width:520px;margin:0 auto;}
+.seating-search-wrap{max-width:520px;margin:0 auto 8px;position:relative;}
+.seating-search{width:100%;padding:15px 20px 15px 50px;font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--dark);background:var(--cream);border:1.5px solid var(--blush);border-radius:100px;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .25s,box-shadow .25s;}
+.seating-search:focus{border-color:var(--coral);box-shadow:0 0 0 3px rgba(224,122,95,.14);}
+.seating-search::placeholder{color:var(--lt);font-style:italic;}
+.s-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--lt);fill:none;stroke-width:1.8;pointer-events:none;}
+.seating-result{max-width:700px;margin:0 auto 16px;min-height:130px;}
+/* single result card */
+/* single result card */
+.seat-card-single{max-width:400px;margin:0 auto;background:var(--cream);border:1.5px solid var(--blush);border-radius:16px;padding:18px 24px;text-align:center;opacity:0;transition:opacity .25s ease;}
+.seat-card-single.show{opacity:1;}
+.rc-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--lt);margin-bottom:8px;}
+.rc-name-lg{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;font-style:italic;color:var(--dark);margin-bottom:4px;}
+.rc-tbl-lg{font-family:'Cinzel',serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--coral);}
+.rc-hint{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--lt);margin-top:5px;}
+/* multiple results chips */
+.seat-chips{display:flex;gap:10px;justify-content:center;flex-wrap:nowrap;}
+.seat-chip{flex:1;min-width:0;background:var(--cream);border:1.5px solid var(--blush);border-radius:14px;padding:14px 16px;cursor:pointer;text-align:left;transition:border-color .22s,background .22s,box-shadow .22s;}
+.seat-chip:hover{border-color:var(--peach);background:var(--blush-light);}
+.seat-chip.active{border-color:var(--coral);background:var(--blush-light);box-shadow:0 0 0 3px rgba(224,122,95,.12);}
+.rc-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;font-style:italic;color:var(--dark);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rc-tbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--coral);}
+.seat-map-outer{max-width:960px;margin:0 auto 0;border-radius:18px;border:1.5px solid var(--blush);overflow:hidden;box-shadow:0 8px 40px rgba(58,40,32,.07);}
+.seat-map-scroll{background:#F7EDE4;}
+.seat-map-scroll svg{display:block;width:100%;height:auto;}
+/* table groups */
+.t-grp{cursor:pointer;}
+.t-grp .t-bg{fill:var(--cream);stroke:#F5C4A8;stroke-width:1.8;transition:fill .22s,stroke .22s;}
+.t-grp .t-num{font-size:13px;fill:#7A5A4A;text-anchor:middle;dominant-baseline:central;pointer-events:none;transition:fill .22s;}
+.t-grp:hover .t-bg{fill:#FAE5D6;stroke:#F2A07B;}
+.t-grp:hover .t-num{fill:#3A2820;}
+.t-grp.hl .t-bg{fill:#E07A5F;stroke:#E07A5F;}
+.t-grp.hl .t-num{fill:#fff;}
+@keyframes tPulse{0%,100%{filter:drop-shadow(0 0 0px rgba(224,122,95,0))}50%{filter:drop-shadow(0 0 10px rgba(224,122,95,.75))}}
+.t-grp.hl{animation:tPulse 1.8s ease infinite;}
+/* modal */
+.seat-overlay{position:fixed;inset:0;background:rgba(58,40,32,.52);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:600;opacity:0;pointer-events:none;transition:opacity .3s;}
+.seat-overlay.open{opacity:1;pointer-events:all;}
+.seat-modal{position:fixed;left:0;right:0;bottom:0;z-index:601;background:var(--cream);border-radius:24px 24px 0 0;padding:28px 28px 56px;max-height:80dvh;max-height:80vh;overflow-y:auto;transform:translateY(102%);transition:transform .42s cubic-bezier(.4,0,.2,1);}
+.seat-overlay.open .seat-modal{transform:translateY(0);}
+.seat-handle{width:40px;height:4px;background:var(--blush);border-radius:2px;margin:0 auto 26px;}
+.seat-modal-close{position:absolute;top:18px;right:22px;background:none;border:none;font-size:28px;line-height:1;color:var(--lt);cursor:pointer;padding:6px 10px;-webkit-tap-highlight-color:transparent;}
+.seat-modal-close:hover{color:var(--mid);}
+.sm-tag{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);margin-bottom:6px;}
+.sm-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:300;font-style:italic;color:var(--dark);margin-bottom:22px;line-height:1.1;}
+.sm-guests{columns:2;column-gap:16px;}
+@media(min-width:540px){.sm-guests{columns:3;}}
+.sm-guest{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--mid);padding:7px 0;border-bottom:1px solid var(--blush-light);break-inside:avoid;}
 </style>
 </head>
 <body>
@@ -582,6 +636,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <li><a href="#koumparos">Κουμπάρα</a></li>
     <li><a href="#program">Πρόγραμμα</a></li>
     <li><a href="#qa">Ερωτήσεις</a></li>
+    <li><a href="#seating">Θέσεις</a></li>
     <li><a href="#rsvp">RSVP</a></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -595,6 +650,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   <a href="#koumparos">Κουμπάρα</a>
   <a href="#program">Πρόγραμμα</a>
   <a href="#qa">Ερωτήσεις</a>
+  <a href="#seating">Θέσεις</a>
   <a href="#rsvp">RSVP</a>
 </div>
 
@@ -619,7 +675,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 <!-- COUNTDOWN -->
 <div id="countdown">
   <p class="cd-label reveal">Μετράμε αντίστροφα για τη μεγάλη μέρα, σας περιμένουμε να τη ζήσουμε μαζί</p>
-  <div class="cd-grid reveal d1">
+  <div class="cd-grid reveal d1" id="cd-grid-wrap">
     <div class="cd-item"><span class="cd-num" id="cd-d">--</span><span class="cd-unit">Ημέρες</span></div>
     <span class="cd-dot">·</span>
     <div class="cd-item"><span class="cd-num" id="cd-h">--</span><span class="cd-unit">Ώρες</span></div>
@@ -759,7 +815,92 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     </div>
   </div>
 </section>
+<!-- SEATING CHART — visible from wedding day (or ?preview) -->
+<div id="seating-section">
+  <div class="full-div"></div>
+  <section id="seating">
+    <div class="section">
+      <p class="sec-tag reveal">Κτήμα Έλενα · Αμπελώνας</p>
+      <h2 class="sec-heading reveal d1">Η θέση σας</h2>
+      <div class="petal-div reveal d2" style="margin-bottom:16px;"><span class="petal-icon">✿</span></div>
+      <p class="sec-sub reveal d3">Βρείτε το όνομά σας ή πατήστε σε κάποιο τραπέζι για να βρείτε την θέση σας.</p>
+    </div>
 
+    <div class="seating-search-wrap reveal d3">
+      <svg class="s-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="seating-input" class="seating-search" type="search" placeholder="Αναζήτηση ονόματος…" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Αναζήτηση ονόματος καλεσμένου">
+    </div>
+    <div class="seating-result" aria-live="polite">
+      <div class="seat-chips" id="seat-chips"></div>
+    </div>
+
+    <div class="seat-map-outer reveal d4">
+      <div class="seat-map-scroll" id="map-scroll">
+        <!-- SVG floor plan — tables injected by JS -->
+        <svg id="seating-svg" viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg" aria-label="Χάρτης τραπεζιών Κτήμα Έλενα" role="img">
+          <defs>
+            <filter id="sglow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/>
+              <feOffset dx="0" dy="2" result="o"/>
+              <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- venue fill -->
+          <rect width="1000" height="540" fill="#F7EDE4"/>
+          <!-- outer wall -->
+          <rect x="8" y="8" width="984" height="524" fill="none" stroke="#F5C4A8" stroke-width="1.5" rx="3"/>
+
+          <!-- ── Monogram sign (far left, same height as pool) ── -->
+          <rect x="18" y="148" width="96" height="220" rx="10" fill="#3A2820"/>
+          <rect x="20" y="150" width="92" height="216" rx="9" fill="none" stroke="#E07A5F" stroke-width="1" opacity=".65"/>
+          <text x="66" y="252" text-anchor="middle" font-family="Cinzel,serif" font-size="22" font-weight="600" fill="#FDF6F0" letter-spacing="3">Π | Δ</text>
+          <text x="66" y="276" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" font-style="italic" fill="rgba(253,246,240,.5)" letter-spacing="1">05.07.2026</text>
+
+          <!-- ── Pool ── -->
+          <rect x="128" y="148" width="170" height="220" rx="12" fill="#C0DAE8" stroke="#85B2C8" stroke-width="1.5"/>
+          <text x="213" y="250" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2.5" fill="#5588A0">ΠΙΣΙΝΑ</text>
+          <path d="M148 266 Q178 259 208 266 Q238 273 268 266" fill="none" stroke="#85B2C8" stroke-width="1.2" opacity=".7"/>
+          <path d="M148 280 Q178 273 208 280 Q238 287 268 280" fill="none" stroke="#85B2C8" stroke-width="1" opacity=".45"/>
+
+          <!-- ── Dance floor (right) ── -->
+          <rect x="714" y="86" width="268" height="278" rx="10" fill="#EAD8B0" stroke="#C6AF88" stroke-width="1.5"/>
+          <text x="848" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="12" letter-spacing="2" fill="#9E8048">ΠΙΣΤΑ</text>
+          <text x="848" y="230" text-anchor="middle" font-family="Cinzel,serif" font-size="12" letter-spacing="2" fill="#9E8048">ΧΟΡΟΥ</text>
+          <text x="848" y="186" text-anchor="middle" font-family="serif" font-size="32" fill="#C6AF88" opacity=".65">♪</text>
+
+          <!-- ── Bar ── -->
+          <rect x="714" y="380" width="268" height="78" rx="8" fill="#3A2820"/>
+          <text x="848" y="423" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="3" fill="rgba(253,246,240,.78)">ΜΠΑΡ</text>
+
+          <!-- ── Entrance (bottom right) ── -->
+          <rect x="714" y="470" width="268" height="56" rx="6" fill="#C5D4BC" stroke="#8B9E7A" stroke-width="1.5"/>
+          <text x="858" y="501" text-anchor="middle" font-family="Cinzel,serif" font-size="10" letter-spacing="3" fill="#5A7048">ΕΙΣΟΔΟΣ</text>
+          <polygon points="720,501 736,491 736,511" fill="#8B9E7A" opacity=".8"/>
+
+          <!-- zone label -->
+          <text x="420" y="36" text-anchor="middle" font-family="Cinzel,serif" font-size="8" letter-spacing="3" fill="#A0806A" opacity=".7">ΤΡΑΠΕΖΙΑ ΔΕΞΙΩΣΗΣ</text>
+
+          <!-- tables injected here by JS -->
+        </svg>
+      </div>
+      <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--lt);padding:8px 16px 12px;background:#F7EDE4;">Πατήστε σε τραπέζι για να δείτε τους καλεσμένους</p>
+    </div>
+  </section>
+</div>
+
+<!-- Seating modal -->
+<div class="seat-overlay" id="seat-overlay">
+  <div class="seat-modal" id="seat-modal">
+    <div class="seat-handle"></div>
+    <button class="seat-modal-close" id="seat-modal-close" aria-label="Κλείσιμο">×</button>
+    <p class="sm-tag" id="sm-tag"></p>
+    <h3 class="sm-title" id="sm-title"></h3>
+    <div class="sm-guests" id="sm-guests"></div>
+  </div>
+</div>
+
+<div class="full-div"></div>
 <!-- RSVP -->
 <section id="rsvp">
   <div class="section">
@@ -822,6 +963,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <iframe name="hidden_iframe" style="display:none;" tabindex="-1" aria-hidden="true"></iframe>
   </div>
 </section>
+
 <div class="full-div"></div>
 
 <!-- FOOTER -->
@@ -941,7 +1083,27 @@ function addHidden(form,name,value){
 // Countdown
 const wedding = new Date('2026-07-05T19:50:00');
 function tick(){
-  const diff = wedding - new Date(); if(diff<=0) return;
+  const diff = wedding - new Date();
+  if(diff<=0){
+    if(!window.__weddingTriggered){
+      window.__weddingTriggered=true;
+      // Fade out countdown
+      var cd=document.getElementById('countdown');
+      if(cd){cd.style.transition='opacity 1.2s ease';cd.style.opacity='0';setTimeout(function(){cd.style.display='none';},1300);}
+      // Fade out RSVP section + nav link
+      var rv=document.getElementById('rsvp');
+      if(rv){rv.style.transition='opacity 1.2s ease 0.4s';rv.style.opacity='0';setTimeout(function(){rv.style.display='none';},1700);}
+      // Hide RSVP from nav
+      document.querySelectorAll('a[href="#rsvp"]').forEach(function(a){a.closest('li')?a.closest('li').style.display='none':a.style.display='none';});
+      // Also hide the full-div before RSVP
+      var rvDiv=rv&&rv.previousElementSibling;
+      if(rvDiv&&rvDiv.classList.contains('full-div')){rvDiv.style.transition='opacity 1.2s ease 0.4s';rvDiv.style.opacity='0';setTimeout(function(){rvDiv.style.display='none';},1700);}
+      // Fire fireworks after short delay
+      setTimeout(function(){if(window.__launchFireworks)window.__launchFireworks();},800);
+      setTimeout(function(){if(window.__launchFireworks)window.__launchFireworks();},2400);
+    }
+    return;
+  }
   document.getElementById('cd-d').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
   document.getElementById('cd-h').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
   document.getElementById('cd-m').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');
@@ -949,9 +1111,237 @@ function tick(){
 }
 tick(); setInterval(tick,1000);
 
+// If already past wedding time on page load, instantly hide countdown + RSVP
+(function(){
+  if(new Date()>=new Date('2026-07-05T19:50:00')){
+    var cd=document.getElementById('countdown');
+    var rv=document.getElementById('rsvp');
+    if(cd)cd.style.display='none';
+    if(rv)rv.style.display='none';
+    document.querySelectorAll('a[href="#rsvp"]').forEach(function(a){a.closest('li')?a.closest('li').style.display='none':a.style.display='none';});
+  }
+})();
+
 // Scroll reveal
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.observe(el));
+
+// ─── SEATING CHART ────────────────────────────────────────────
+(function(){
+  // Observe reveal elements inside seating section
+  var ss=document.getElementById('seating-section');
+  if(ss) ss.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){obs.observe(el);});
+
+  // Guest data — replace with real names before wedding day
+  var TABLES={
+    1:{label:'Τραπέζι 1',guests:['Νίκος Παππάς','Ελένη Παππά','Κώστας Γεωργίου','Μαρία Γεωργίου','Τάκης Αδαμόπουλος','Σοφία Αδαμοπούλου','Χρήστος Βλάχος','Κατερίνα Βλάχου','Αντώνης Μαυρίδης','Ζωή Μαυρίδη']},
+    2:{label:'Τραπέζι 2',guests:['Γιάννης Σπυρόπουλος','Ανδρομάχη Σπυροπούλου','Στέφανος Κωστόπουλος','Ιωάννα Κωστοπούλου','Βασίλης Λαμπρόπουλος','Αγγελική Λαμπροπούλου','Πέτρος Ανδρέου','Φωτεινή Ανδρέου','Δημήτρης Νάκος','Αρετή Νάκου']},
+    3:{label:'Τραπέζι 3',guests:['Ηλίας Χριστοδούλου','Θεοδώρα Χριστοδούλου','Μιχάλης Καραγιάννης','Αναστασία Καραγιάννη','Αποστόλης Νικολάου','Παναγιώτα Νικολάου','Λευτέρης Μαρκόπουλος','Αλεξάνδρα Μαρκοπούλου','Σπύρος Ιωαννίδης','Ειρήνη Ιωαννίδου']},
+    4:{label:'Τραπέζι 4',guests:['Παναγιώτης Θεοδωρίδης','Ευγενία Θεοδωρίδου','Αλέξανδρος Μιχαηλίδης','Νίκη Μιχαηλίδου','Γιώργης Σιδέρης','Δέσποινα Σιδέρη','Λάμπρος Ρούσσος','Αικατερίνη Ρούσσου','Τάσος Κυριακίδης','Σταυρούλα Κυριακίδου']},
+    5:{label:'Τραπέζι 5',guests:['Σταύρος Αθανασίου','Βασιλική Αθανασίου','Θανάσης Χατζηγιάννης','Χριστίνα Χατζηγιάννη','Νεκτάριος Τσάκος','Κλεοπάτρα Τσάκου','Ευθύμης Παπαδόπουλος','Σεβαστή Παπαδοπούλου','Άγγελος Γκαλαμάς','Φωτεινή Γκαλαμά']},
+    6:{label:'Τραπέζι 6',guests:['Κώστας Τσώλης','Μαρία Τσώλη','Νίκος Πέτσας','Ελένη Πέτσα','Γιάννης Βρεττός','Σοφία Βρεττού','Δημήτρης Σκλαβενίτης','Κατερίνα Σκλαβενίτη','Βασίλης Κοντός','Αγγελική Κοντού']},
+    7:{label:'Τραπέζι 7',guests:['Χρήστος Δημητρίου','Ανδρομάχη Δημητρίου','Στέφανος Βασιλείου','Ζωή Βασιλείου','Αντώνης Σταματίου','Ειρήνη Σταματίου','Πέτρος Αλεξίου','Νίκη Αλεξίου','Τάκης Παππάς','Αρετή Παππά']},
+    8:{label:'Τραπέζι 8',guests:['Μιχάλης Γεωργίου','Θεοδώρα Γεωργίου','Ηλίας Αδαμόπουλος','Αναστασία Αδαμοπούλου','Σπύρος Καραγιάννης','Παναγιώτα Καραγιάννη','Λευτέρης Νικολάου','Αλεξάνδρα Νικολάου','Λάμπρος Μαυρίδης','Ιωάννα Μαυρίδου']},
+    9:{label:'Τραπέζι 9',guests:['Παναγιώτης Σπυρόπουλος','Σεβαστή Σπυροπούλου','Αλέξανδρος Κωστόπουλος','Δέσποινα Κωστοπούλου','Νεκτάριος Λαμπρόπουλος','Βασιλική Λαμπροπούλου','Αποστόλης Ανδρέου','Κλεοπάτρα Ανδρέου','Ευθύμης Μαρκόπουλος','Φωτεινή Μαρκοπούλου']},
+    10:{label:'Τραπέζι 10',guests:['Τάσος Χριστοδούλου','Χριστίνα Χριστοδούλου','Γιώργης Θεοδωρίδης','Ευγενία Θεοδωρίδου','Σταύρος Μιχαηλίδης','Αικατερίνη Μιχαηλίδου','Άγγελος Σιδέρης','Σοφία Σιδέρη','Θανάσης Ρούσσος','Ανδρομάχη Ρούσσου']},
+    11:{label:'Τραπέζι 11',guests:['Νίκος Κυριακίδης','Ειρήνη Κυριακίδου','Κώστας Αθανασίου','Ζωή Αθανασίου','Γιάννης Χατζηγιάννης','Κατερίνα Χατζηγιάννη','Δημήτρης Τσάκος','Αρετή Τσάκου','Βασίλης Παπαδόπουλος','Νίκη Παπαδοπούλου']},
+    12:{label:'Τραπέζι 12',guests:['Ηλίας Βρεττός','Αγγελική Βρεττού','Μιχάλης Τσώλης','Θεοδώρα Τσώλη','Αντώνης Πέτσας','Σταυρούλα Πέτσα','Λευτέρης Σκλαβενίτης','Παναγιώτα Σκλαβενίτη','Σπύρος Κοντός','Αλεξάνδρα Κοντού']},
+    13:{label:'Τραπέζι 13',guests:['Χρήστος Νικολάου','Φωτεινή Νικολάου','Στέφανος Γεωργίου','Ανδρομάχη Γεωργίου','Παναγιώτης Αλεξίου','Σεβαστή Αλεξίου','Τάκης Βασιλείου','Ειρήνη Βασιλείου','Νεκτάριος Σταματίου','Κλεοπάτρα Σταματίου']},
+    14:{label:'Τραπέζι 14',guests:['Αλέξανδρος Παππάς','Μαρία Παππά','Λάμπρος Αδαμόπουλος','Ζωή Αδαμοπούλου','Γιώργης Μαυρίδης','Αικατερίνη Μαυρίδου','Αποστόλης Καραγιάννης','Νίκη Καραγιάννη','Ευθύμης Ιωαννίδης','Βασιλική Ιωαννίδου']},
+    15:{label:'Τραπέζι 15',guests:['Τάσος Μαρκόπουλος','Χριστίνα Μαρκοπούλου','Σταύρος Χριστοδούλου','Δέσποινα Χριστοδούλου','Άγγελος Θεοδωρίδης','Αρετή Θεοδωρίδου','Θανάσης Μιχαηλίδης','Σοφία Μιχαηλίδου','Νίκος Ρούσσος','Ελένη Ρούσσου']},
+    16:{label:'Τραπέζι 16',guests:['Γιάννης Σιδέρης','Αγγελική Σιδέρη','Κώστας Κυριακίδης','Ανδρομάχη Κυριακίδου','Βασίλης Αθανασίου','Φωτεινή Αθανασίου','Πέτρος Χατζηγιάννης','Παναγιώτα Χατζηγιάννη','Χρήστος Τσάκος','Ειρήνη Τσάκου']},
+    17:{label:'Τραπέζι 17',guests:['Μιχάλης Παπαδόπουλος','Θεοδώρα Παπαδοπούλου','Ηλίας Γκαλαμάς','Αναστασία Γκαλαμά','Λευτέρης Τσώλης','Αλεξάνδρα Τσώλη','Σπύρος Πέτσας','Κλεοπάτρα Πέτσα','Αντώνης Βρεττός','Σεβαστή Βρεττού']},
+    18:{label:'Τραπέζι 18',guests:['Παναγιώτης Σκλαβενίτης','Βασιλική Σκλαβενίτη','Αλέξανδρος Κοντός','Ιωάννα Κοντού','Νεκτάριος Νικολάου','Σταυρούλα Νικολάου','Αποστόλης Γεωργίου','Νίκη Γεωργίου','Ευθύμης Αλεξίου','Ζωή Αλεξίου']},
+    19:{label:'Τραπέζι 19',guests:['Τάκης Βασιλείου','Μαρία Βασιλείου','Λάμπρος Σταματίου','Φωτεινή Σταματίου','Γιώργης Παππάς','Αικατερίνη Παππά','Σταύρος Αδαμόπουλος','Αρετή Αδαμοπούλου','Θανάσης Μαυρίδης','Ανδρομάχη Μαυρίδου']},
+    20:{label:'Τραπέζι 20',guests:['Άγγελος Καραγιάννης','Χριστίνα Καραγιάννη','Τάσος Ιωαννίδης','Σοφία Ιωαννίδου','Νίκος Μαρκόπουλος','Ειρήνη Μαρκοπούλου','Κώστας Χριστοδούλου','Αγγελική Χριστοδούλου','Γιάννης Θεοδωρίδης','Δέσποινα Θεοδωρίδου']}
+  };
+
+  // Table positions [cx, cy] on 1000×540 SVG
+  var TPOS={
+    1:[154,88],  2:[209,88],  3:[262,88],   // above pool
+    4:[154,452], 5:[209,452], 6:[262,452],  // below pool
+    7:[340,100], 8:[340,210], 9:[340,320],  10:[340,430],
+    11:[440,100],12:[440,210],13:[440,320], 14:[440,430],
+    15:[540,100],16:[540,210],17:[540,320], 18:[540,430],
+    19:[640,155],20:[640,375]
+  };
+
+  // Pre-build search index once — snorm+gToL called per guest, not per keystroke
+  var IDX=[];
+  for(var _n in TABLES){
+    var _g=TABLES[_n].guests;
+    for(var _i=0;_i<_g.length;_i++){
+      var _norm=snorm(_g[_i]);
+      IDX.push({name:_g[_i],num:_n,norm:_norm,lat:gToL(_norm)});
+    }
+  }
+
+  // Inject table circles into SVG
+  var svg=document.getElementById('seating-svg');
+  if(!svg) return;
+  var NS='http://www.w3.org/2000/svg';
+  for(var n in TPOS){
+    var p=TPOS[n];
+    var g=document.createElementNS(NS,'g');
+    g.setAttribute('class','t-grp');
+    g.setAttribute('data-table',n);
+    g.setAttribute('role','button');
+    g.setAttribute('tabindex','0');
+    g.setAttribute('aria-label','Τραπέζι '+n);
+    var c=document.createElementNS(NS,'circle');
+    c.setAttribute('class','t-bg');
+    c.setAttribute('cx',p[0]);
+    c.setAttribute('cy',p[1]);
+    c.setAttribute('r','26');
+    g.appendChild(c);
+    var t=document.createElementNS(NS,'text');
+    t.setAttribute('class','t-num');
+    t.setAttribute('x',p[0]);
+    t.setAttribute('y',p[1]+1);
+    t.setAttribute('font-family','Cinzel,serif');
+    t.textContent=n;
+    g.appendChild(t);
+    svg.appendChild(g);
+  }
+
+  // Click table → open modal
+  svg.addEventListener('click',function(e){
+    var g=e.target.closest('.t-grp');
+    if(!g) return;
+    openModal(parseInt(g.getAttribute('data-table')));
+  });
+  svg.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){
+      var g=e.target.closest('.t-grp');
+      if(!g) return;
+      e.preventDefault();
+      openModal(parseInt(g.getAttribute('data-table')));
+    }
+  });
+
+  // Search
+  // Normalize: strip all combining diacritics (τόνοι, dialytika κλπ) + lowercase
+  function snorm(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); }
+  // Greek → approximate Latin (for typing "andreou" → finds "Ανδρέου")
+  function gToL(s){
+    return s
+      .replace(/ου/g,'ou').replace(/αι/g,'ai').replace(/ει/g,'ei').replace(/οι/g,'oi')
+      .replace(/αυ/g,'av').replace(/ευ/g,'ev').replace(/μπ/g,'b').replace(/ντ/g,'d')
+      .replace(/γκ/g,'g').replace(/γγ/g,'ng').replace(/τσ/g,'ts').replace(/τζ/g,'dz')
+      .replace(/θ/g,'th').replace(/ξ/g,'ks').replace(/ψ/g,'ps').replace(/χ/g,'x')
+      .replace(/α/g,'a').replace(/β/g,'v').replace(/γ/g,'g').replace(/δ/g,'d')
+      .replace(/ε/g,'e').replace(/ζ/g,'z').replace(/η/g,'i').replace(/ι/g,'i')
+      .replace(/κ/g,'k').replace(/λ/g,'l').replace(/μ/g,'m').replace(/ν/g,'n')
+      .replace(/ο/g,'o').replace(/π/g,'p').replace(/ρ/g,'r').replace(/σ/g,'s')
+      .replace(/ς/g,'s').replace(/τ/g,'t').replace(/υ/g,'y').replace(/φ/g,'f')
+      .replace(/ω/g,'o');
+  }
+
+  var input=document.getElementById('seating-input');
+  var resultWrap=document.getElementById('seat-chips').parentElement;
+  var chips=document.getElementById('seat-chips');
+  var _dbt=null; // debounce timer
+
+  function matchesQ(gn,gl,words){
+    return words.every(function(w){return gn.indexOf(w)!==-1||gl.indexOf(w)!==-1;});
+  }
+
+  function doSearch(q){
+    if(q.length<2){clearResults();return;}
+    var words=q.split(/\s+/).filter(function(w){return w.length>0;});
+    var matches=[];
+    for(var _j=0;_j<IDX.length;_j++){
+      var e=IDX[_j];
+      if(matchesQ(e.norm,e.lat,words)){
+        matches.push({name:e.name,num:e.num});
+        if(matches.length===3) break;
+      }
+    }
+    matches.length ? renderResults(matches) : clearResults();
+  }
+
+  if(input){
+    input.addEventListener('input',function(){
+      var q=snorm(this.value.trim());
+      clearTimeout(_dbt);
+      if(q.length<2){clearResults();return;}
+      _dbt=setTimeout(function(){doSearch(q);},160);
+    });
+  }
+
+  function renderResults(matches){
+    var existing=resultWrap.querySelector('.seat-card-single');
+    if(existing) existing.remove();
+    chips.innerHTML='';
+    if(matches.length===1){
+      var m=matches[0];
+      var card=document.createElement('div');
+      card.className='seat-card-single';
+      card.innerHTML='<p class="rc-label">Η θέση σας</p>'+
+        '<p class="rc-name-lg">'+m.name+'</p>'+
+        '<p class="rc-tbl-lg">ΤΡΑΠΕΖΙ '+m.num+'</p>'+
+        '<p class="rc-hint">Πατήστε στο τραπέζι για τη λίστα καλεσμένων</p>';
+      resultWrap.insertBefore(card,chips);
+      requestAnimationFrame(function(){card.classList.add('show');});
+      highlightTable(m.num);
+    } else {
+      chips.innerHTML=matches.map(function(m,idx){
+        return '<button class="seat-chip'+(idx===0?' active':'')+
+          '" data-table="'+m.num+'" type="button">'+
+          '<p class="rc-name">'+m.name+'</p>'+
+          '<p class="rc-tbl">ΤΡΑΠΕΖΙ '+m.num+'</p>'+
+          '</button>';
+      }).join('');
+      chips.querySelectorAll('.seat-chip').forEach(function(chip){
+        chip.addEventListener('click',function(){
+          chips.querySelectorAll('.seat-chip').forEach(function(c){c.classList.remove('active');});
+          this.classList.add('active');
+          highlightTable(this.getAttribute('data-table'));
+        });
+      });
+      highlightTable(matches[0].num);
+    }
+  }
+
+  function highlightTable(num){
+    document.querySelectorAll('.t-grp').forEach(function(g){g.classList.remove('hl');});
+    if(!num) return;
+    var tg=svg.querySelector('[data-table="'+num+'"]');
+    if(tg) tg.classList.add('hl');
+  }
+
+  function clearResults(){
+    clearTimeout(_dbt);
+    var existing=resultWrap.querySelector('.seat-card-single');
+    if(existing) existing.remove();
+    chips.innerHTML='';
+    highlightTable(null);
+  }
+
+  // Modal
+  var overlay=document.getElementById('seat-overlay');
+  var smTag=document.getElementById('sm-tag');
+  var smTitle=document.getElementById('sm-title');
+  var smGuests=document.getElementById('sm-guests');
+
+  function openModal(num){
+    var t=TABLES[num];
+    if(!t) return;
+    smTag.textContent='';
+    smTitle.textContent=t.label;
+    smGuests.innerHTML=t.guests.map(function(g){return'<div class="sm-guest">'+g+'</div>';}).join('');
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  document.getElementById('seat-modal-close').addEventListener('click',closeModal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
+
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow='';
+  }
+})();
 
 // Nav shadow + parallax
 window.addEventListener('scroll',()=>{
