@@ -511,11 +511,13 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 .seat-chip.active{border-color:var(--coral);background:var(--blush-light);box-shadow:0 0 0 3px rgba(224,122,95,.12);}
 .rc-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;font-style:italic;color:var(--dark);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .rc-tbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--coral);}
-.seat-map-outer{max-width:960px;margin:0 auto 0;border-radius:18px;border:1.5px solid var(--blush);overflow:hidden;box-shadow:0 8px 40px rgba(58,40,32,.07);}
-.seat-map-scroll{background:#F7EDE4;}
+.seat-map-wrap{position:relative;max-width:1200px;margin:0 auto;}
+.seat-map-outer{border-radius:18px;border:1.5px solid var(--blush);overflow:hidden;box-shadow:0 8px 40px rgba(58,40,32,.07);}
+.seat-map-scroll{position:relative;background:#F7EDE4;}
 .seat-map-scroll svg{display:block;width:100%;height:auto;}
 /* table groups */
-.t-grp{cursor:pointer;}
+.t-grp{cursor:pointer;outline:none;}
+.t-grp:focus-visible .t-bg{stroke:var(--coral);stroke-width:2.4;}
 .t-grp .t-bg{fill:var(--cream);stroke:#F5C4A8;stroke-width:1.8;transition:fill .22s,stroke .22s;}
 .t-grp .t-num{font-size:13px;fill:#7A5A4A;text-anchor:middle;dominant-baseline:central;pointer-events:none;transition:fill .22s;}
 .t-grp:hover .t-bg{fill:#FAE5D6;stroke:#F2A07B;}
@@ -533,10 +535,26 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 .seat-modal-close{position:absolute;top:18px;right:22px;background:none;border:none;font-size:28px;line-height:1;color:var(--lt);cursor:pointer;padding:6px 10px;-webkit-tap-highlight-color:transparent;}
 .seat-modal-close:hover{color:var(--mid);}
 .sm-tag{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);margin-bottom:6px;}
-.sm-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:300;font-style:italic;color:var(--dark);margin-bottom:22px;line-height:1.1;}
+.sm-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,38px);font-weight:300;font-style:italic;color:var(--coral);margin-bottom:22px;line-height:1.1;}
 .sm-guests{columns:2;column-gap:16px;}
 @media(min-width:540px){.sm-guests{columns:3;}}
 .sm-guest{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--mid);padding:7px 0;border-bottom:1px solid var(--blush-light);break-inside:avoid;}
+/* menu mini thumbnail + lightbox */
+.menu-mini-corner{position:absolute;left:6.6%;top:27.4%;transform:translate(-50%,calc(-100% - 10px));z-index:15;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.menu-mini{position:relative;width:68px;height:68px;border-radius:50%;overflow:hidden;border:2px solid var(--blush-light);padding:0;cursor:pointer;background:var(--cream);box-shadow:0 6px 16px rgba(58,40,32,.18);transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease,border-color .4s ease;}
+.menu-mini img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.menu-mini:hover,.menu-mini:focus-visible{transform:scale(1.6);box-shadow:0 16px 36px rgba(58,40,32,.28);border-color:var(--coral);}
+.menu-mini:hover img,.menu-mini:focus-visible img{transform:scale(1.08);}
+.menu-mini-icon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(58,40,32,.4);color:#FDF6F0;opacity:0;transition:opacity .35s ease;}
+.menu-mini:hover .menu-mini-icon,.menu-mini:focus-visible .menu-mini-icon{opacity:1;}
+.menu-mini-icon svg{width:20px;height:20px;}
+.menu-mini-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--coral);text-shadow:0 1px 4px rgba(253,246,240,.9);}
+.menu-lightbox{position:fixed;inset:0;z-index:700;background:rgba(58,40,32,.86);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.menu-lightbox.open{opacity:1;pointer-events:all;}
+.menu-lightbox img{display:block;max-width:100%;max-height:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.4);transform:scale(.96);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.menu-lightbox.open img{transform:scale(1);}
+.menu-lightbox-close{position:absolute;top:20px;right:24px;background:none;border:none;font-size:34px;line-height:1;color:var(--cream);cursor:pointer;padding:6px 10px;-webkit-tap-highlight-color:transparent;}
+.menu-lightbox-close:hover{color:var(--peach);}
 </style>
 </head>
 <body>
@@ -800,6 +818,12 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 </section>
 <div class="full-div"></div>
 
+<!-- Menu lightbox -->
+<div class="menu-lightbox" id="menu-lightbox" role="dialog" aria-modal="true" aria-label="Μενού Γάμου">
+  <button class="menu-lightbox-close" id="menu-lightbox-close" aria-label="Κλείσιμο">×</button>
+  <img src="assets/menu.jpg" alt="Μενού Γάμου">
+</div>
+
 <canvas id="ceremony-fw" aria-hidden="true"></canvas>
 <!-- Q&A -->
 <section id="qa">
@@ -834,8 +858,16 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
       <div class="seat-chips" id="seat-chips"></div>
     </div>
 
-    <div class="seat-map-outer reveal d4">
+    <div class="seat-map-wrap reveal d4">
+    <div class="seat-map-outer">
       <div class="seat-map-scroll" id="map-scroll">
+        <div class="menu-mini-corner">
+          <button class="menu-mini" id="menu-open-btn" type="button" aria-haspopup="dialog" aria-label="Δείτε το μενού">
+            <img src="assets/menu.jpg" alt="Μενού Γάμου">
+            <span class="menu-mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></span>
+          </button>
+          <span class="menu-mini-label">Μενού</span>
+        </div>
         <!-- SVG floor plan — tables injected by JS -->
         <svg id="seating-svg" viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg" aria-label="Χάρτης τραπεζιών Κτήμα Έλενα" role="img">
           <defs>
@@ -858,10 +890,10 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
           <text x="66" y="276" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" font-style="italic" fill="rgba(253,246,240,.5)" letter-spacing="1">05.07.2026</text>
 
           <!-- ── Pool ── -->
-          <rect x="128" y="148" width="170" height="220" rx="12" fill="#C0DAE8" stroke="#85B2C8" stroke-width="1.5"/>
-          <text x="213" y="250" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2.5" fill="#5588A0">ΠΙΣΙΝΑ</text>
-          <path d="M148 266 Q178 259 208 266 Q238 273 268 266" fill="none" stroke="#85B2C8" stroke-width="1.2" opacity=".7"/>
-          <path d="M148 280 Q178 273 208 280 Q238 287 268 280" fill="none" stroke="#85B2C8" stroke-width="1" opacity=".45"/>
+          <rect x="128" y="148" width="170" height="220" rx="12" fill="#FAE5D6" stroke="#F5C4A8" stroke-width="1.5"/>
+          <text x="213" y="250" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2.5" fill="#E07A5F">ΠΙΣΙΝΑ</text>
+          <path d="M148 266 Q178 259 208 266 Q238 273 268 266" fill="none" stroke="#F2A07B" stroke-width="1.2" opacity=".7"/>
+          <path d="M148 280 Q178 273 208 280 Q238 287 268 280" fill="none" stroke="#F2A07B" stroke-width="1" opacity=".45"/>
 
           <!-- ── Dance floor (right) ── -->
           <rect x="714" y="86" width="268" height="278" rx="10" fill="#EAD8B0" stroke="#C6AF88" stroke-width="1.5"/>
@@ -885,6 +917,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
         </svg>
       </div>
       <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--lt);padding:8px 16px 12px;background:#F7EDE4;">Πατήστε σε τραπέζι για να δείτε τους καλεσμένους</p>
+    </div>
     </div>
   </section>
 </div>
@@ -1153,7 +1186,11 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
     17:{label:'Τραπέζι 17',guests:['Μιχάλης Παπαδόπουλος','Θεοδώρα Παπαδοπούλου','Ηλίας Γκαλαμάς','Αναστασία Γκαλαμά','Λευτέρης Τσώλης','Αλεξάνδρα Τσώλη','Σπύρος Πέτσας','Κλεοπάτρα Πέτσα','Αντώνης Βρεττός','Σεβαστή Βρεττού']},
     18:{label:'Τραπέζι 18',guests:['Παναγιώτης Σκλαβενίτης','Βασιλική Σκλαβενίτη','Αλέξανδρος Κοντός','Ιωάννα Κοντού','Νεκτάριος Νικολάου','Σταυρούλα Νικολάου','Αποστόλης Γεωργίου','Νίκη Γεωργίου','Ευθύμης Αλεξίου','Ζωή Αλεξίου']},
     19:{label:'Τραπέζι 19',guests:['Τάκης Βασιλείου','Μαρία Βασιλείου','Λάμπρος Σταματίου','Φωτεινή Σταματίου','Γιώργης Παππάς','Αικατερίνη Παππά','Σταύρος Αδαμόπουλος','Αρετή Αδαμοπούλου','Θανάσης Μαυρίδης','Ανδρομάχη Μαυρίδου']},
-    20:{label:'Τραπέζι 20',guests:['Άγγελος Καραγιάννης','Χριστίνα Καραγιάννη','Τάσος Ιωαννίδης','Σοφία Ιωαννίδου','Νίκος Μαρκόπουλος','Ειρήνη Μαρκοπούλου','Κώστας Χριστοδούλου','Αγγελική Χριστοδούλου','Γιάννης Θεοδωρίδης','Δέσποινα Θεοδωρίδου']}
+    20:{label:'Τραπέζι 20',guests:['Άγγελος Καραγιάννης','Χριστίνα Καραγιάννη','Τάσος Ιωαννίδης','Σοφία Ιωαννίδου','Νίκος Μαρκόπουλος','Ειρήνη Μαρκοπούλου','Κώστας Χριστοδούλου','Αγγελική Χριστοδούλου','Γιάννης Θεοδωρίδης','Δέσποινα Θεοδωρίδου']},
+    21:{label:'Τραπέζι 21',guests:['Βασίλης Δημόπουλος','Κατερίνα Δημοπούλου','Στέλιος Ζαχαρίου','Μαρία Ζαχαρίου','Οδυσσέας Καπετάνιος','Θεοδώρα Καπετάνιου','Χάρης Λαζαρίδης','Φωτεινή Λαζαρίδου','Γρηγόρης Μπέλλος','Αννα Μπέλλου']},
+    22:{label:'Τραπέζι 22',guests:['Ορέστης Νταής','Ελισάβετ Νταή','Παύλος Ξένος','Σοφία Ξένου','Ραφαήλ Ορφανός','Βασιλική Ορφανού','Σάββας Παλαμάς','Κατερίνα Παλαμά','Τηλέμαχος Ρίζος','Δήμητρα Ρίζου']},
+    23:{label:'Τραπέζι 23',guests:['Φίλιππος Σαράντης','Ελένη Σαράντη','Χαράλαμπος Τσίρος','Αναστασία Τσίρου','Ιάσονας Φραγκίσκος','Παρασκευή Φραγκίσκου','Λουκάς Χαραλάμπους','Ουρανία Χαραλάμπους','Μάρκος Ψαρράς','Ιωάννα Ψαρρά']},
+    24:{label:'Τραπέζι 24',guests:['Αχιλλέας Αγγελόπουλος','Μαρία Αγγελοπούλου','Βαγγέλης Μπαρμπής','Ζωή Μπαρμπή','Θοδωρής Γιαννόπουλος','Ελένη Γιαννοπούλου','Κλέαρχος Δρόσος','Αικατερίνη Δρόσου','Σίμος Ελευθερίου','Χριστίνα Ελευθερίου']}
   };
 
   // Table positions [cx, cy] on 1000×540 SVG
@@ -1163,7 +1200,8 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
     7:[340,100], 8:[340,210], 9:[340,320],  10:[340,430],
     11:[440,100],12:[440,210],13:[440,320], 14:[440,430],
     15:[540,100],16:[540,210],17:[540,320], 18:[540,430],
-    19:[640,155],20:[640,375]
+    19:[640,155],23:[640,265],20:[640,375],24:[640,485],
+    21:[782,42], 22:[914,42]              // above the dance floor
   };
 
   // Pre-build search index once — snorm+gToL called per guest, not per keystroke
@@ -1476,6 +1514,20 @@ drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeD));
   };
 
   window.addEventListener('resize',resize,{passive:true});
+})();
+
+// Menu lightbox
+(function(){
+  var openBtn=document.getElementById('menu-open-btn');
+  var lightbox=document.getElementById('menu-lightbox');
+  var closeBtn=document.getElementById('menu-lightbox-close');
+  if(!openBtn||!lightbox||!closeBtn) return;
+  function open(){lightbox.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lightbox.classList.remove('open');document.body.style.overflow='';}
+  openBtn.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  lightbox.addEventListener('click',function(e){if(e.target===lightbox)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 
 // Service Worker — caches page + photos for offline use
