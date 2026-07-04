@@ -237,41 +237,6 @@ nav.scrolled{box-shadow:0 2px 24px rgba(58,40,32,.09);}
 .qa-q{font-family:'Caveat','Cormorant Garamond',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--peach);margin-bottom:10px;}
 .qa-a{font-size:17px;line-height:1.75;color:var(--blush-light);font-style:italic;}
 
-/* RSVP */
-#rsvp{background:var(--cream);}
-.rsvp-form{max-width:560px;margin:50px auto 0;display:flex;flex-direction:column;gap:34px;}
-.rsvp-field{position:relative;}
-.rsvp-field label{display:block;font-family:'Caveat','Cormorant Garamond',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--coral);margin-bottom:10px;}
-.rsvp-field input,.rsvp-field textarea,.rsvp-field select{
-  width:100%;background:transparent;border:none;border-bottom:1px solid var(--blush);
-  padding:10px 0;font-family:'Caveat','Cormorant Garamond',serif;font-size:19px;font-style:italic;
-  color:var(--dark);outline:none;transition:border-color .3s;appearance:none;
-}
-.rsvp-field input:focus,.rsvp-field textarea:focus,.rsvp-field select:focus{border-bottom-color:var(--coral);}
-.rsvp-field input::placeholder,.rsvp-field textarea::placeholder{color:var(--lt);opacity:1;}
-.rsvp-field select{cursor:pointer;color:var(--dark);}
-.rsvp-field select option{font-style:normal;}
-.rsvp-field textarea{resize:none;height:80px;line-height:1.7;}
-.rsvp-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-@media(max-width:500px){.rsvp-row{grid-template-columns:1fr;}}
-.rsvp-attend{display:flex;gap:24px;padding:4px 0;}
-.rsvp-attend label{font-family:'Caveat','Cormorant Garamond',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--mid);cursor:pointer;display:flex;align-items:center;gap:10px;margin-bottom:0;}
-.rsvp-attend input[type=radio]{display:none;}
-.rsvp-radio-box{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--blush);flex-shrink:0;transition:all .25s;position:relative;}
-/* Παρουσία: animated underline για και τις δύο επιλογές */
-.rsvp-label-text{position:relative;display:inline-block;}
-.rsvp-label-text::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:currentColor;transition:width .45s cubic-bezier(.4,0,.2,1);}
-#r-yes:checked+label .rsvp-radio-box{border-color:var(--sage);background:var(--sage);box-shadow:0 0 0 3px rgba(139,158,122,.18);}
-#r-yes:checked+label{color:var(--sage);}
-#r-yes:checked+label .rsvp-label-text::after{width:100%;}
-#r-no:checked+label .rsvp-radio-box{border-color:var(--coral);background:var(--coral);}
-#r-no:checked+label{color:var(--coral);}
-#r-no:checked+label .rsvp-label-text::after{width:100%;}
-.rsvp-submit{margin-top:10px;text-align:center;}
-.rsvp-btn{display:inline-block;padding:16px 52px;background:transparent;border:1px solid var(--coral);font-family:'Caveat','Cormorant Garamond',serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--coral);cursor:pointer;transition:all .35s ease;}
-.rsvp-btn:hover{background:var(--coral);color:#fff;}
-.rsvp-notice{font-family:'Caveat','Cormorant Garamond',serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--lt);margin-top:16px;}
-
 /* FOOTER */
 footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 .footer-pretext{font-family:'Caveat','Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:normal;font-weight:500;color:var(--coral);line-height:1.5;max-width:460px;margin:0 auto 28px;letter-spacing:.3px;}
@@ -540,7 +505,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
 @media(min-width:540px){.sm-guests{columns:3;}}
 .sm-guest{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--mid);padding:7px 0;border-bottom:1px solid var(--blush-light);break-inside:avoid;}
 /* menu mini thumbnail + lightbox */
-.menu-mini-corner{position:absolute;left:6.6%;top:27.4%;transform:translate(-50%,calc(-100% - 10px));z-index:15;display:flex;flex-direction:column;align-items:center;gap:6px;}
+.menu-mini-corner{position:absolute;left:6%;top:26%;transform:translate(-50%,calc(-100% - 10px));z-index:15;display:flex;flex-direction:column;align-items:center;gap:6px;}
 .menu-mini{position:relative;width:68px;height:68px;border-radius:50%;overflow:hidden;border:2px solid var(--blush-light);padding:0;cursor:pointer;background:var(--cream);box-shadow:0 6px 16px rgba(58,40,32,.18);transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s ease,border-color .4s ease;}
 .menu-mini img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
 .menu-mini:hover,.menu-mini:focus-visible{transform:scale(1.6);box-shadow:0 16px 36px rgba(58,40,32,.28);border-color:var(--coral);}
@@ -655,7 +620,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <li><a href="#program">Πρόγραμμα</a></li>
     <li><a href="#qa">Ερωτήσεις</a></li>
     <li><a href="#seating">Θέσεις</a></li>
-    <li><a href="#rsvp">RSVP</a></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
@@ -669,7 +633,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   <a href="#program">Πρόγραμμα</a>
   <a href="#qa">Ερωτήσεις</a>
   <a href="#seating">Θέσεις</a>
-  <a href="#rsvp">RSVP</a>
 </div>
 
 <!-- HERO -->
@@ -832,7 +795,7 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <h2 class="sec-heading reveal d1">Χρήσιμες Πληροφορίες</h2>
     <div class="petal-div reveal d2"><span class="petal-icon" style="color:var(--peach)">✿</span></div>
     <div class="qa-grid">
-      <div class="qa-card reveal-right d1"><p class="qa-q">Πρέπει να δηλώσω αν θα έρθω ή όχι;</p><p class="qa-a">Παρακαλούμε ενημερώστε μας για την παρουσίας μέσω της φόρμας RSVP &nbsp ή τηλεφωνικά έως τις 20 &nbsp Ιουνίου, ώστε να γνωρίζουμε τον ακριβή αριθμό καλεσμένων.</p></div>
+      <div class="qa-card reveal-right d1"><p class="qa-q">Πρέπει να δηλώσω αν θα έρθω ή όχι;</p><p class="qa-a">Παρακαλούμε ενημερώστε μας τηλεφωνικά έως τις 20 &nbsp Ιουνίου, ώστε να γνωρίζουμε τον ακριβή αριθμό καλεσμένων.</p></div>
       <div class="qa-card reveal-left d1"><p class="qa-q">Μπορώ να φέρω συνοδό;</p><p class="qa-a">Εννοείται, αρκεί να τον/την προσθέσετε στη δήλωση συμμετοχής.</p></div>
       <div class="qa-card reveal-right d2"><p class="qa-q">Που να παρκάρω;</p><p class="qa-a">Για την εκκλησία υπάρχει χώρος στάθμευσης στη γύρω περιοχή, σίγουρα θα βρείτε θέση στα κοντινά στενά. Το κτήμα, επίσης διαθέτει μεγάλο χώρο στάθμευσης εντός του χώρου.</p></div>
       <div class="qa-card reveal-left d2"><p class="qa-q">Θα γίνει μέσα ή έξω;</p><p class="qa-a">Η τελετή θα πραγματοποιηθεί μέσα στην εκκλησία, ενώ η δεξίωση θα γίνει σε εξωτερικό χώρο. Μην ανησυχείτε ακόμα κι αν βρέξει, τα έχουμε προβλέψει όλα… και ο χορός θα κρατήσει μέχρι το πρωί!</p></div>
@@ -883,35 +846,36 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
           <!-- outer wall -->
           <rect x="8" y="8" width="984" height="524" fill="none" stroke="#F5C4A8" stroke-width="1.5" rx="3"/>
 
-          <!-- ── Monogram sign (far left, same height as pool) ── -->
-          <rect x="18" y="148" width="96" height="220" rx="10" fill="#3A2820"/>
-          <rect x="20" y="150" width="92" height="216" rx="9" fill="none" stroke="#E07A5F" stroke-width="1" opacity=".65"/>
-          <text x="66" y="252" text-anchor="middle" font-family="Cinzel,serif" font-size="22" font-weight="600" fill="#FDF6F0" letter-spacing="3">Π | Δ</text>
-          <text x="66" y="276" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" font-style="italic" fill="rgba(253,246,240,.5)" letter-spacing="1">05.07.2026</text>
+          <!-- ── Monogram sign (far left) ── -->
+          <rect x="15" y="160" width="90" height="150" rx="10" fill="#3A2820"/>
+          <rect x="17" y="162" width="86" height="146" rx="9" fill="none" stroke="#E07A5F" stroke-width="1" opacity=".65"/>
+          <text x="60" y="229" text-anchor="middle" font-family="Cinzel,serif" font-size="18" font-weight="600" fill="#FDF6F0" letter-spacing="2">Π | Δ</text>
+          <text x="60" y="251" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" fill="rgba(253,246,240,.5)" letter-spacing="1">05.07.2026</text>
 
-          <!-- ── Pool ── -->
-          <rect x="128" y="148" width="170" height="220" rx="12" fill="#FAE5D6" stroke="#F5C4A8" stroke-width="1.5"/>
-          <text x="213" y="250" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2.5" fill="#E07A5F">ΠΙΣΙΝΑ</text>
-          <path d="M148 266 Q178 259 208 266 Q238 273 268 266" fill="none" stroke="#F2A07B" stroke-width="1.2" opacity=".7"/>
-          <path d="M148 280 Q178 273 208 280 Q238 287 268 280" fill="none" stroke="#F2A07B" stroke-width="1" opacity=".45"/>
+          <!-- ── Πισίνα / Νυφικό / Πίστα — horizontal spine, left → right, all sharing one center line ── -->
+          <rect x="115" y="175" width="200" height="120" rx="12" fill="#FAE5D6" stroke="#F5C4A8" stroke-width="1.5"/>
+          <text x="215" y="238" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2.5" fill="#E07A5F">ΠΙΣΙΝΑ</text>
+          <path d="M133 253 Q175 246 215 253 Q255 260 297 253" fill="none" stroke="#F2A07B" stroke-width="1.2" opacity=".7"/>
 
-          <!-- ── Dance floor (right) ── -->
-          <rect x="714" y="86" width="268" height="278" rx="10" fill="#EAD8B0" stroke="#C6AF88" stroke-width="1.5"/>
-          <text x="848" y="210" text-anchor="middle" font-family="Cinzel,serif" font-size="12" letter-spacing="2" fill="#9E8048">ΠΙΣΤΑ</text>
-          <text x="848" y="230" text-anchor="middle" font-family="Cinzel,serif" font-size="12" letter-spacing="2" fill="#9E8048">ΧΟΡΟΥ</text>
-          <text x="848" y="186" text-anchor="middle" font-family="serif" font-size="32" fill="#C6AF88" opacity=".65">♪</text>
+          <rect x="323" y="175" width="50" height="120" rx="6" fill="#FDF6F0" stroke="#E07A5F" stroke-width="1.3"/>
+          <text x="348" y="238" text-anchor="middle" font-family="Cinzel,serif" font-size="7.5" letter-spacing="1" fill="#E07A5F">ΝΥΦΙΚΟ</text>
 
-          <!-- ── Bar ── -->
-          <rect x="714" y="380" width="268" height="78" rx="8" fill="#3A2820"/>
-          <text x="848" y="423" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="3" fill="rgba(253,246,240,.78)">ΜΠΑΡ</text>
+          <rect x="527" y="173" width="173" height="124" rx="10" fill="#EAD8B0" stroke="#C6AF88" stroke-width="1.5"/>
+          <text x="613" y="237" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2" fill="#9E8048">ΠΙΣΤΑ</text>
+          <text x="613" y="255" text-anchor="middle" font-family="Cinzel,serif" font-size="11" letter-spacing="2" fill="#9E8048">ΧΟΡΟΥ</text>
+          <text x="613" y="205" text-anchor="middle" font-family="serif" font-size="22" fill="#C6AF88" opacity=".65">♪</text>
 
-          <!-- ── Entrance (bottom right) ── -->
-          <rect x="714" y="470" width="268" height="56" rx="6" fill="#C5D4BC" stroke="#8B9E7A" stroke-width="1.5"/>
-          <text x="858" y="501" text-anchor="middle" font-family="Cinzel,serif" font-size="10" letter-spacing="3" fill="#5A7048">ΕΙΣΟΔΟΣ</text>
-          <polygon points="720,501 736,491 736,511" fill="#8B9E7A" opacity=".8"/>
+          <!-- ── Bar (below τραπέζια 1-4, above the entrance) ── -->
+          <rect x="790" y="432" width="195" height="50" rx="8" fill="#3A2820"/>
+          <text x="887" y="461" text-anchor="middle" font-family="Cinzel,serif" font-size="9" letter-spacing="2" fill="rgba(253,246,240,.78)">ΜΠΑΡ</text>
+
+          <!-- ── Entrance (jammed into the bottom-right corner) ── -->
+          <rect x="790" y="486" width="195" height="38" rx="6" fill="#C5D4BC" stroke="#8B9E7A" stroke-width="1.5"/>
+          <polygon points="920,499 932,492 932,506" fill="#8B9E7A" opacity=".8"/>
+          <text x="887" y="509" text-anchor="middle" font-family="Cinzel,serif" font-size="7" letter-spacing="1.5" fill="#5A7048">ΕΙΣΟΔΟΣ</text>
 
           <!-- zone label -->
-          <text x="420" y="36" text-anchor="middle" font-family="Cinzel,serif" font-size="8" letter-spacing="3" fill="#A0806A" opacity=".7">ΤΡΑΠΕΖΙΑ ΔΕΞΙΩΣΗΣ</text>
+          <text x="500" y="21" text-anchor="middle" font-family="Cinzel,serif" font-size="8" letter-spacing="3" fill="#A0806A" opacity=".7">ΤΡΑΠΕΖΙΑ ΔΕΞΙΩΣΗΣ</text>
 
           <!-- tables injected here by JS -->
         </svg>
@@ -932,70 +896,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
     <div class="sm-guests" id="sm-guests"></div>
   </div>
 </div>
-
-<div class="full-div"></div>
-<!-- RSVP -->
-<section id="rsvp">
-  <div class="section">
-    <p class="sec-tag reveal">Δήλωση Συμμετοχής</p>
-    <h2 class="sec-heading reveal d1">Θα είστε μαζί μας;</h2>
-    <div class="petal-div reveal d2"><span class="petal-icon">✿</span></div>
-    <p class="sec-body reveal d2" style="margin-top:16px;">Παρακαλούμε δηλώστε συμμετοχή<br>έως τις <strong style="font-style:normal;color:var(--coral);">20 Ιουνίου 2026</strong>.</p>
-
-    <form class="rsvp-form reveal d3" onsubmit="rsvpSubmit(event)" action="https://docs.google.com/forms/d/e/1FAIpQLScq7xkw9opg_fIq9z9NrMKXFhLaJ0ICHgcMqsrtrulojrEiag/formResponse" method="POST" target="hidden_iframe">
-
-      <div class="rsvp-row">
-        <div class="rsvp-field">
-          <label>Ονοματεπώνυμο</label>
-          <input type="text" name="entry.1413578392" placeholder="Το όνομά σας" required>
-        </div>
-        <div class="rsvp-field">
-          <label>Τηλέφωνο</label>
-          <input type="tel" name="entry.442714748" placeholder="69x xxx xxxx" required>
-        </div>
-      </div>
-
-      <div class="rsvp-field">
-        <label>Παρουσία</label>
-        <div class="rsvp-attend">
-          <input type="radio" name="entry.109547292" id="r-yes" value="Θα είμαι εκεί" checked>
-          <label for="r-yes"><span class="rsvp-radio-box"></span><span class="rsvp-label-text">Θα είμαι εκεί</span></label>
-          <input type="radio" name="entry.109547292" id="r-no" value="Δεν μπορώ να παρευρεθώ">
-          <label for="r-no"><span class="rsvp-radio-box"></span><span class="rsvp-label-text">Δεν μπορώ να παρευρεθώ</span></label>
-        </div>
-      </div>
-
-      <div class="rsvp-row">
-        <div class="rsvp-field">
-          <label>Αριθμός ατόμων</label>
-          <select id="rsvp-people">
-            <option value="1">1 άτομο</option>
-            <option value="2" selected>2 άτομα</option>
-            <option value="3">3 άτομα</option>
-            <option value="4">4 άτομα</option>
-            <option value="5+">5+</option>
-          </select>
-        </div>
-        <div class="rsvp-field">
-          <label>Διατροφικές ανάγκες</label>
-          <input type="text" name="entry.1176884213" placeholder="π.χ. χορτοφαγία…">
-        </div>
-      </div>
-
-      <div class="rsvp-field">
-        <label>Μήνυμα <span style="font-family:'Caveat','Cormorant Garamond',serif;font-size:14px;font-style:italic;text-transform:none;letter-spacing:0;color:var(--lt)">(προαιρετικό)</span></label>
-        <textarea name="entry.566858147" placeholder="Κάτι που θέλετε να μας πείτε…"></textarea>
-      </div>
-
-      <div class="rsvp-submit">
-        <button class="rsvp-btn" type="submit">Αποστολή</button>
-        <p class="rsvp-notice">Η δήλωση υποβάλλεται μία φορά — σε περίπτωση νέας υποβολής, ισχύει η πιο πρόσφατη απάντηση</p>
-      </div>
-
-    </form>
-    <iframe name="hidden_iframe" style="display:none;" tabindex="-1" aria-hidden="true"></iframe>
-  </div>
-</section>
 
 <div class="full-div"></div>
 
@@ -1068,51 +968,6 @@ footer{background:var(--cream2);padding:84px 24px 70px;text-align:center;}
   document.addEventListener('keydown',keyOpen);
 })();
 
-// RSVP — submits to Google Forms via hidden iframe (no page redirect)
-function rsvpSubmit(e){
-  var form=e.target;
-  var notice=form.querySelector('.rsvp-notice');
-
-  // Reset any previous error styling
-  notice.style.color='';
-
-  // Check internet — if offline, block submit and let user retry without losing data
-  if(!navigator.onLine){
-    e.preventDefault();
-    notice.textContent='Δεν υπάρχει σύνδεση στο internet. Παρακαλούμε δοκιμάστε ξανά μόλις επιστρέψει η σύνδεση.';
-    notice.style.color='var(--coral)';
-    return;
-  }
-
-  // Clean up previously injected hidden inputs
-  form.querySelectorAll('.rsvp-hidden').forEach(function(n){n.remove();});
-
-  // People count
-  var peopleVal=form.querySelector('#rsvp-people').value;
-  if(['1','2','3','4','5'].indexOf(peopleVal)>-1){
-    addHidden(form,'entry.1172473396',peopleVal);
-  } else {
-    addHidden(form,'entry.1172473396','__other_option__');
-    addHidden(form,'entry.1172473396.other_option_response',peopleVal);
-  }
-
-  // Update UI optimistically
-  setTimeout(function(){
-    var btn=form.querySelector('.rsvp-btn');
-    btn.textContent='Ευχαριστούμε!';
-    btn.style.background='var(--sage)';
-    btn.style.borderColor='var(--sage)';
-    btn.style.color='#fff';
-    btn.disabled=true;
-    notice.textContent='Η απάντησή σας καταγράφηκε.';
-  },300);
-}
-function addHidden(form,name,value){
-  var i=document.createElement('input');
-  i.type='hidden';i.name=name;i.value=value;i.className='rsvp-hidden';
-  form.appendChild(i);
-}
-
 // Countdown
 const wedding = new Date('2026-07-05T19:50:00');
 function tick(){
@@ -1123,14 +978,6 @@ function tick(){
       // Fade out countdown
       var cd=document.getElementById('countdown');
       if(cd){cd.style.transition='opacity 1.2s ease';cd.style.opacity='0';setTimeout(function(){cd.style.display='none';},1300);}
-      // Fade out RSVP section + nav link
-      var rv=document.getElementById('rsvp');
-      if(rv){rv.style.transition='opacity 1.2s ease 0.4s';rv.style.opacity='0';setTimeout(function(){rv.style.display='none';},1700);}
-      // Hide RSVP from nav
-      document.querySelectorAll('a[href="#rsvp"]').forEach(function(a){a.closest('li')?a.closest('li').style.display='none':a.style.display='none';});
-      // Also hide the full-div before RSVP
-      var rvDiv=rv&&rv.previousElementSibling;
-      if(rvDiv&&rvDiv.classList.contains('full-div')){rvDiv.style.transition='opacity 1.2s ease 0.4s';rvDiv.style.opacity='0';setTimeout(function(){rvDiv.style.display='none';},1700);}
       // Fire fireworks after short delay
       setTimeout(function(){if(window.__launchFireworks)window.__launchFireworks();},800);
       setTimeout(function(){if(window.__launchFireworks)window.__launchFireworks();},2400);
@@ -1144,14 +991,11 @@ function tick(){
 }
 tick(); setInterval(tick,1000);
 
-// If already past wedding time on page load, instantly hide countdown + RSVP
+// If already past wedding time on page load, instantly hide countdown
 (function(){
   if(new Date()>=new Date('2026-07-05T19:50:00')){
     var cd=document.getElementById('countdown');
-    var rv=document.getElementById('rsvp');
     if(cd)cd.style.display='none';
-    if(rv)rv.style.display='none';
-    document.querySelectorAll('a[href="#rsvp"]').forEach(function(a){a.closest('li')?a.closest('li').style.display='none':a.style.display='none';});
   }
 })();
 
@@ -1165,43 +1009,56 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
   var ss=document.getElementById('seating-section');
   if(ss) ss.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){obs.observe(el);});
 
-  // Guest data — replace with real names before wedding day
+  // Real guest data by table
   var TABLES={
-    1:{label:'Τραπέζι 1',guests:['Νίκος Παππάς','Ελένη Παππά','Κώστας Γεωργίου','Μαρία Γεωργίου','Τάκης Αδαμόπουλος','Σοφία Αδαμοπούλου','Χρήστος Βλάχος','Κατερίνα Βλάχου','Αντώνης Μαυρίδης','Ζωή Μαυρίδη']},
-    2:{label:'Τραπέζι 2',guests:['Γιάννης Σπυρόπουλος','Ανδρομάχη Σπυροπούλου','Στέφανος Κωστόπουλος','Ιωάννα Κωστοπούλου','Βασίλης Λαμπρόπουλος','Αγγελική Λαμπροπούλου','Πέτρος Ανδρέου','Φωτεινή Ανδρέου','Δημήτρης Νάκος','Αρετή Νάκου']},
-    3:{label:'Τραπέζι 3',guests:['Ηλίας Χριστοδούλου','Θεοδώρα Χριστοδούλου','Μιχάλης Καραγιάννης','Αναστασία Καραγιάννη','Αποστόλης Νικολάου','Παναγιώτα Νικολάου','Λευτέρης Μαρκόπουλος','Αλεξάνδρα Μαρκοπούλου','Σπύρος Ιωαννίδης','Ειρήνη Ιωαννίδου']},
-    4:{label:'Τραπέζι 4',guests:['Παναγιώτης Θεοδωρίδης','Ευγενία Θεοδωρίδου','Αλέξανδρος Μιχαηλίδης','Νίκη Μιχαηλίδου','Γιώργης Σιδέρης','Δέσποινα Σιδέρη','Λάμπρος Ρούσσος','Αικατερίνη Ρούσσου','Τάσος Κυριακίδης','Σταυρούλα Κυριακίδου']},
-    5:{label:'Τραπέζι 5',guests:['Σταύρος Αθανασίου','Βασιλική Αθανασίου','Θανάσης Χατζηγιάννης','Χριστίνα Χατζηγιάννη','Νεκτάριος Τσάκος','Κλεοπάτρα Τσάκου','Ευθύμης Παπαδόπουλος','Σεβαστή Παπαδοπούλου','Άγγελος Γκαλαμάς','Φωτεινή Γκαλαμά']},
-    6:{label:'Τραπέζι 6',guests:['Κώστας Τσώλης','Μαρία Τσώλη','Νίκος Πέτσας','Ελένη Πέτσα','Γιάννης Βρεττός','Σοφία Βρεττού','Δημήτρης Σκλαβενίτης','Κατερίνα Σκλαβενίτη','Βασίλης Κοντός','Αγγελική Κοντού']},
-    7:{label:'Τραπέζι 7',guests:['Χρήστος Δημητρίου','Ανδρομάχη Δημητρίου','Στέφανος Βασιλείου','Ζωή Βασιλείου','Αντώνης Σταματίου','Ειρήνη Σταματίου','Πέτρος Αλεξίου','Νίκη Αλεξίου','Τάκης Παππάς','Αρετή Παππά']},
-    8:{label:'Τραπέζι 8',guests:['Μιχάλης Γεωργίου','Θεοδώρα Γεωργίου','Ηλίας Αδαμόπουλος','Αναστασία Αδαμοπούλου','Σπύρος Καραγιάννης','Παναγιώτα Καραγιάννη','Λευτέρης Νικολάου','Αλεξάνδρα Νικολάου','Λάμπρος Μαυρίδης','Ιωάννα Μαυρίδου']},
-    9:{label:'Τραπέζι 9',guests:['Παναγιώτης Σπυρόπουλος','Σεβαστή Σπυροπούλου','Αλέξανδρος Κωστόπουλος','Δέσποινα Κωστοπούλου','Νεκτάριος Λαμπρόπουλος','Βασιλική Λαμπροπούλου','Αποστόλης Ανδρέου','Κλεοπάτρα Ανδρέου','Ευθύμης Μαρκόπουλος','Φωτεινή Μαρκοπούλου']},
-    10:{label:'Τραπέζι 10',guests:['Τάσος Χριστοδούλου','Χριστίνα Χριστοδούλου','Γιώργης Θεοδωρίδης','Ευγενία Θεοδωρίδου','Σταύρος Μιχαηλίδης','Αικατερίνη Μιχαηλίδου','Άγγελος Σιδέρης','Σοφία Σιδέρη','Θανάσης Ρούσσος','Ανδρομάχη Ρούσσου']},
-    11:{label:'Τραπέζι 11',guests:['Νίκος Κυριακίδης','Ειρήνη Κυριακίδου','Κώστας Αθανασίου','Ζωή Αθανασίου','Γιάννης Χατζηγιάννης','Κατερίνα Χατζηγιάννη','Δημήτρης Τσάκος','Αρετή Τσάκου','Βασίλης Παπαδόπουλος','Νίκη Παπαδοπούλου']},
-    12:{label:'Τραπέζι 12',guests:['Ηλίας Βρεττός','Αγγελική Βρεττού','Μιχάλης Τσώλης','Θεοδώρα Τσώλη','Αντώνης Πέτσας','Σταυρούλα Πέτσα','Λευτέρης Σκλαβενίτης','Παναγιώτα Σκλαβενίτη','Σπύρος Κοντός','Αλεξάνδρα Κοντού']},
-    13:{label:'Τραπέζι 13',guests:['Χρήστος Νικολάου','Φωτεινή Νικολάου','Στέφανος Γεωργίου','Ανδρομάχη Γεωργίου','Παναγιώτης Αλεξίου','Σεβαστή Αλεξίου','Τάκης Βασιλείου','Ειρήνη Βασιλείου','Νεκτάριος Σταματίου','Κλεοπάτρα Σταματίου']},
-    14:{label:'Τραπέζι 14',guests:['Αλέξανδρος Παππάς','Μαρία Παππά','Λάμπρος Αδαμόπουλος','Ζωή Αδαμοπούλου','Γιώργης Μαυρίδης','Αικατερίνη Μαυρίδου','Αποστόλης Καραγιάννης','Νίκη Καραγιάννη','Ευθύμης Ιωαννίδης','Βασιλική Ιωαννίδου']},
-    15:{label:'Τραπέζι 15',guests:['Τάσος Μαρκόπουλος','Χριστίνα Μαρκοπούλου','Σταύρος Χριστοδούλου','Δέσποινα Χριστοδούλου','Άγγελος Θεοδωρίδης','Αρετή Θεοδωρίδου','Θανάσης Μιχαηλίδης','Σοφία Μιχαηλίδου','Νίκος Ρούσσος','Ελένη Ρούσσου']},
-    16:{label:'Τραπέζι 16',guests:['Γιάννης Σιδέρης','Αγγελική Σιδέρη','Κώστας Κυριακίδης','Ανδρομάχη Κυριακίδου','Βασίλης Αθανασίου','Φωτεινή Αθανασίου','Πέτρος Χατζηγιάννης','Παναγιώτα Χατζηγιάννη','Χρήστος Τσάκος','Ειρήνη Τσάκου']},
-    17:{label:'Τραπέζι 17',guests:['Μιχάλης Παπαδόπουλος','Θεοδώρα Παπαδοπούλου','Ηλίας Γκαλαμάς','Αναστασία Γκαλαμά','Λευτέρης Τσώλης','Αλεξάνδρα Τσώλη','Σπύρος Πέτσας','Κλεοπάτρα Πέτσα','Αντώνης Βρεττός','Σεβαστή Βρεττού']},
-    18:{label:'Τραπέζι 18',guests:['Παναγιώτης Σκλαβενίτης','Βασιλική Σκλαβενίτη','Αλέξανδρος Κοντός','Ιωάννα Κοντού','Νεκτάριος Νικολάου','Σταυρούλα Νικολάου','Αποστόλης Γεωργίου','Νίκη Γεωργίου','Ευθύμης Αλεξίου','Ζωή Αλεξίου']},
-    19:{label:'Τραπέζι 19',guests:['Τάκης Βασιλείου','Μαρία Βασιλείου','Λάμπρος Σταματίου','Φωτεινή Σταματίου','Γιώργης Παππάς','Αικατερίνη Παππά','Σταύρος Αδαμόπουλος','Αρετή Αδαμοπούλου','Θανάσης Μαυρίδης','Ανδρομάχη Μαυρίδου']},
-    20:{label:'Τραπέζι 20',guests:['Άγγελος Καραγιάννης','Χριστίνα Καραγιάννη','Τάσος Ιωαννίδης','Σοφία Ιωαννίδου','Νίκος Μαρκόπουλος','Ειρήνη Μαρκοπούλου','Κώστας Χριστοδούλου','Αγγελική Χριστοδούλου','Γιάννης Θεοδωρίδης','Δέσποινα Θεοδωρίδου']},
-    21:{label:'Τραπέζι 21',guests:['Βασίλης Δημόπουλος','Κατερίνα Δημοπούλου','Στέλιος Ζαχαρίου','Μαρία Ζαχαρίου','Οδυσσέας Καπετάνιος','Θεοδώρα Καπετάνιου','Χάρης Λαζαρίδης','Φωτεινή Λαζαρίδου','Γρηγόρης Μπέλλος','Αννα Μπέλλου']},
-    22:{label:'Τραπέζι 22',guests:['Ορέστης Νταής','Ελισάβετ Νταή','Παύλος Ξένος','Σοφία Ξένου','Ραφαήλ Ορφανός','Βασιλική Ορφανού','Σάββας Παλαμάς','Κατερίνα Παλαμά','Τηλέμαχος Ρίζος','Δήμητρα Ρίζου']},
-    23:{label:'Τραπέζι 23',guests:['Φίλιππος Σαράντης','Ελένη Σαράντη','Χαράλαμπος Τσίρος','Αναστασία Τσίρου','Ιάσονας Φραγκίσκος','Παρασκευή Φραγκίσκου','Λουκάς Χαραλάμπους','Ουρανία Χαραλάμπους','Μάρκος Ψαρράς','Ιωάννα Ψαρρά']},
-    24:{label:'Τραπέζι 24',guests:['Αχιλλέας Αγγελόπουλος','Μαρία Αγγελοπούλου','Βαγγέλης Μπαρμπής','Ζωή Μπαρμπή','Θοδωρής Γιαννόπουλος','Ελένη Γιαννοπούλου','Κλέαρχος Δρόσος','Αικατερίνη Δρόσου','Σίμος Ελευθερίου','Χριστίνα Ελευθερίου']}
+    1:{label:'Τραπέζι 1',guests:[]},
+    2:{label:'Τραπέζι 2',guests:['Αθηνά Ντουρλαρή (2 άτομα)','Νίκη Παπαντωνίου (2 άτομα)','Διονυσία Σταμάτη (2 άτομα)','Θεοδώρα Τζουμέρκα (2 άτομα)']},
+    3:{label:'Τραπέζι 3',guests:['Κωνσταντίνος Ρουσόπουλος (2 άτομα)','Στέλιος Τζάμος & Γεωργία Κάβαλα (3 άτομα)','Χρήστος Τζάμος (2 άτομα)']},
+    4:{label:'Τραπέζι 4',guests:['Φωτεινή Λαμπρούλη','Ράνια Παπαγεωργίου (2 άτομα)','Βανέσα Παπαργύρη','Χριστίνα Σαμαρά (2 άτομα)','Ελένη Τολιοπούλου (2 άτομα)','Ζήνα Τσιτρούλη (2 άτομα)']},
+    5:{label:'Τραπέζι 5',guests:['Ευάγγελος Βολιώτης (2 άτομα)','Δημήτριος Κουφάκης (2 άτομα)','Αθηνά Σιώκα (2 άτομα)','Θεόδωρος Σιώκας (2 άτομα)','Δημήτρης Σιώκας (2 άτομα)']},
+    6:{label:'Τραπέζι 6',guests:['Ρένα Καραμούτη (2 άτομα)','Βασίλειος Κεμεντσετσίδης (2 άτομα)','Ιωάννης Κυρατζούλης (2 άτομα)','Ελευθερία Κωστάκη (γιαγιά)','Αικατερίνη Μπίκα','Βασίλειος Παπαναστασίου']},
+    7:{label:'Τραπέζι 7',guests:['Βάσω Ζώρα (3 άτομα)','Μιχάλης Ζώρας (4 άτομα)','Ευάγγελος Σκριμπώνης (2 άτομα)']},
+    8:{label:'Τραπέζι 8',guests:['Βαγγέλης Κεμεντσετσίδης','Ιωάννης Κεμεντσετσίδης (3 άτομα)','Νικόλαος Κυρατζούλης (2 άτομα)','Κωνσταντίνος Κωστάκης (2 άτομα)']},
+    9:{label:'Τραπέζι 9',guests:['Ανδρέας Αγραφιώτης (2 άτομα)','Δημήτριος Μούχτης (2 άτομα)','Τάσος Τόκας (2 άτομα)','Ευπραξία Τσιβαλιού (2 άτομα)']},
+    10:{label:'Τραπέζι 10',guests:['Αργύρης Αργυρακούλης (2 άτομα)','Βασίλειος Γκουνέλας (2 άτομα)','Κωνσταντίνος Γουγουλιάς (2 άτομα)','Δημήτριος Νταφούλης (2 άτομα)','Όλγα Σαββίδου']},
+    11:{label:'Τραπέζι 11',guests:['Χρήστος Καράμετος (2 άτομα)','Βασίλης Καρακώστας (2 άτομα)','Κωνσταντίνος Σπανός (2 άτομα)','Ηλίας Τσέτσας (2 άτομα)','Ηλίας Συρούκης']},
+    12:{label:'Τραπέζι 12',guests:['Θωμάς Ντσούνος (4 άτομα)','Ηλίας Ντσούνος (3 άτομα)','Σωτήρης Παπακώστα (3 άτομα)']},
+    13:{label:'Τραπέζι 13',guests:['Γεώργιος Γιουφτσίδης (4 άτομα)','Σωτηρία Σισμανίδη (2 άτομα)']},
+    14:{label:'Τραπέζι 14',guests:['Αντωνία Καβδά','Μαρία Κατραχούρα (2 άτομα)','Εύη Μπαλταδάκη','Μαρία Νάκα (3 άτομα)','Χριστίνα Σπυριδωνίδου']},
+    15:{label:'Τραπέζι 15',guests:['Γεώργιος Τσεκούρας (2 άτομα)','Μιχάλης Βορίσης','Ανδρέας Γιουρέλης','Παναγιώτης Κύρκος','Βασίλειος Γέρος','Θοδωρής Γκούβας']},
+    16:{label:'Τραπέζι 16',guests:['Άκης Γκάγκαρης (2 άτομα)','Κωστής Στεφάνου','Νάσια Κουτσουπούλου','Παναγιώτης Κουρκούνης','Στέφανος Μπλιάτσιος (2 άτομα)','Γεώργιος Κόλλαρος']},
+    17:{label:'Τραπέζι 17',guests:['Ιωάννα Ευαγγελοπούλου (2 άτομα)','Νάντια Κακίου','Παναγιώτα Μπαμπάνη','Ιφιγένεια Ράπτη','Χρήστος Στούκας','Θωμάς Ψαρρής (2 άτομα)']},
+    18:{label:'Τραπέζι 18',guests:['Χρήστος Γιδάρης (3 άτομα)','Νικόλαος Ζήνδρος (3 άτομα)','Ιωάννης Σκανδάλης','Ευάγγελος Τσούκης (2 άτομα)']},
+    19:{label:'Τραπέζι 19',guests:['Νικόλαος Βουλτσίδης (4 άτομα)','Χρυσάνθη Κωστάκη','Γεώργιος Παπαγεωργίου (2 άτομα)','Χρύσα Παπαγεωργίου']},
+    20:{label:'Τραπέζι 20',guests:['Αθανάσιος Γουρνάρης (2 άτομα)','Κωνσταντίνος Καρφής (2 άτομα)','Θανάσης & Δήμητρα Κοντογιαννόπουλος (2 άτομα)','Χρήστος Χαϊδούλης (2 άτομα)','Μάριος Χαρισούλης (2 άτομα)']},
+    21:{label:'Τραπέζι 21',guests:['Παύλος Ντζούνος (3 άτομα)','Σταμάτης Κουτσάκης (4 άτομα)']},
+    22:{label:'Τραπέζι 22',guests:['Σπύρος Στεργιούλης (2 άτομα)','Ευαγγελία Παπακώστα (2 άτομα)','Στυλιανή Τσινοπούλου','Φώτης Τσινόπουλος','Ηλίας Παγανός (4 άτομα)']},
+    23:{label:'Τραπέζι 23',guests:[]}
   };
 
-  // Table positions [cx, cy] on 1000×540 SVG
+  // Table positions [cx, cy] on 1000×540 SVG — matches the venue floor plan
+  // sketch: πισίνα → νυφικό → πίστα run left-to-right. Tables 11-23 sit above
+  // the spine, tables 1-10 below it. 15/14 flank the νυφικό/πίστα edge (15 above, 14 below).
+  // Ίσα διαστήματα (110px pitch) ανάμεσα σε όλες τις στήλες τραπεζιών, ώστε να
+  // ανοίγουν ισομετρικά μέχρι κοντά στο μπαρ αντί να μαζεύονται γύρω από την πίστα.
   var TPOS={
-    1:[154,88],  2:[209,88],  3:[262,88],   // above pool
-    4:[154,452], 5:[209,452], 6:[262,452],  // below pool
-    7:[340,100], 8:[340,210], 9:[340,320],  10:[340,430],
-    11:[440,100],12:[440,210],13:[440,320], 14:[440,430],
-    15:[540,100],16:[540,210],17:[540,320], 18:[540,430],
-    19:[640,155],23:[640,265],20:[640,375],24:[640,485],
-    21:[782,42], 22:[914,42]              // above the dance floor
+    11:[150,133], 23:[150,63],
+    12:[260,133], 22:[260,63],
+    13:[370,133], 21:[370,63],
+    20:[480,63],
+    16:[590,133], 19:[590,63],
+    17:[700,133], 18:[700,63],
+
+    10:[150,390],
+    9:[260,390], 7:[260,460],
+    8:[370,390], 6:[370,460],
+    5:[480,460],
+
+    // Τραπέζι 4 στην ίδια ευθεία (κάθετη) με το 16 — τραπέζι 2 με το 17
+    4:[590,390], 2:[700,390],
+    3:[590,460], 1:[700,460],
+
+    15:[480,210],14:[480,278]
   };
 
   // Pre-build search index once — snorm+gToL called per guest, not per keystroke
@@ -1230,7 +1087,7 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
     c.setAttribute('class','t-bg');
     c.setAttribute('cx',p[0]);
     c.setAttribute('cy',p[1]);
-    c.setAttribute('r','26');
+    c.setAttribute('r','28');
     g.appendChild(c);
     var t=document.createElementNS(NS,'text');
     t.setAttribute('class','t-num');
