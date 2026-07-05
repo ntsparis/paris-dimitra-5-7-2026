@@ -1011,7 +1011,7 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
 
   // Real guest data by table
   var TABLES={
-    1:{label:'Τραπέζι 1',guests:[]},
+    1:{label:'Τραπέζι 1',guests:['ΑΓΓΕΛΟΣ ΚΑΣΤΟΡΗΣ & CREW']},
     2:{label:'Τραπέζι 2',guests:['ΑΘΗΝΑ ΝΤΟΥΡΛΑΡΗ (2 ΑΤΟΜΑ)','ΝΙΚΗ ΠΑΠΑΝΤΩΝΙΟΥ (2 ΑΤΟΜΑ)','ΔΙΟΝΥΣΙΑ ΣΤΑΜΑΤΗ (2 ΑΤΟΜΑ)','ΘΕΟΔΩΡΑ ΤΖΟΥΜΕΡΚΑ (2 ΑΤΟΜΑ)']},
     3:{label:'Τραπέζι 3',guests:['ΚΩΝΣΤΑΝΤΙΝΟΣ ΡΟΥΣΟΠΟΥΛΟΣ (2 ΑΤΟΜΑ)','ΣΤΕΛΙΟΣ ΤΖΑΜΟΣ & ΓΕΩΡΓΙΑ ΚΑΒΑΛΑ (3 ΑΤΟΜΑ)','ΧΡΗΣΤΟΣ ΤΖΑΜΟΣ (2 ΑΤΟΜΑ)']},
     4:{label:'Τραπέζι 4',guests:['ΦΩΤΕΙΝΗ ΛΑΜΠΡΟΥΛΗ','ΡΑΝΙΑ ΠΑΠΑΓΕΩΡΓΙΟΥ (2 ΑΤΟΜΑ)','ΒΑΝΕΣΑ ΠΑΠΑΡΓΥΡΗ','ΧΡΙΣΤΙΝΑ ΣΑΜΑΡΑ (2 ΑΤΟΜΑ)','ΕΛΕΝΗ ΤΟΛΙΟΠΟΥΛΟΥ (2 ΑΤΟΜΑ)','ΖΗΝΑ ΤΣΙΤΡΟΥΛΗ (2 ΑΤΟΜΑ)']},
@@ -1224,7 +1224,7 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>obs.
     if(!t) return;
     smTag.textContent='';
     smTitle.textContent=t.label;
-    smGuests.innerHTML=t.guests.map(function(g){return'<div class="sm-guest">'+g+'</div>';}).join('');
+    smGuests.innerHTML=t.guests.length?t.guests.map(function(g){return'<div class="sm-guest">'+g+'</div>';}).join(''):'<div class="sm-guest">ΑΔΕΙΟ</div>';
     overlay.classList.add('open');
     document.body.style.overflow='hidden';
   }
