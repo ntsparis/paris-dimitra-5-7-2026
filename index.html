@@ -978,9 +978,6 @@ function tick(){
       // Fade out countdown
       var cd=document.getElementById('countdown');
       if(cd){cd.style.transition='opacity 1.2s ease';cd.style.opacity='0';setTimeout(function(){cd.style.display='none';},1300);}
-      // Fire fireworks after short delay
-      setTimeout(function(){if(window.__launchFireworks)window.__launchFireworks();},800);
-      setTimeout(function(){if(window.__launchFireworks)window.__launchFireworks();},2400);
     }
     return;
   }
