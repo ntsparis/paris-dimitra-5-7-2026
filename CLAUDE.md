@@ -11,7 +11,9 @@ All user-facing text is in **Greek**. Keep it that way — never switch to Engli
 - Pure HTML/CSS/JS — no frameworks, no build step, no dependencies
 - **Single file: `index.html`** — everything (styles, markup, scripts) lives here
 - One long scrollable page divided into named `<section>` / `<div>` blocks
-- Google Fonts: Cormorant Garamond, EB Garamond, Cinzel
+- Fonts are **self-hosted** (not Google Fonts CDN): Caveat, Cormorant Garamond (normal + italic), Great Vibes — loaded via `@font-face` in `<style>` from `fonts/*.woff2`, split into `latin` / `latin-ext` / `greek-ext` subsets per family. `Cinzel` appears only as an SVG `font-family` fallback (seating chart labels) — it is not self-hosted and just falls back to the system serif.
+- `sw.js` is a service worker (cache name `pd-v2`) that precaches `index.html`, the font files, and `photos/IMG_1.jpg`–`IMG_3.jpg` for offline support
+- An **envelope intro overlay** (`#env-overlay`) gates the page on load — a 3D CSS envelope with a wax seal the visitor clicks/taps to "open" before the hero reveals. It must work fully offline (no external deps) and pauses hero animations (`body.env-loading`) until dismissed.
 
 ## Design Language
 
@@ -36,9 +38,10 @@ Elegant, romantic, minimal. Think luxury stationery — not flashy, not playful.
 Never introduce new colors without fitting them into this warm, muted palette.
 
 ### Typography
-- **Cinzel** — section tags, labels, nav links (uppercase, tracked)
-- **Cormorant Garamond** — headings, hero names, large display text (italic, light weight)
-- **EB Garamond** — body text (italic, fluid)
+- **Caveat** (script) with **Cormorant Garamond** as fallback — nav logo/links, hero names, footer names, section tags/labels, timeline text; used almost everywhere via the stacked `font-family:'Caveat','Cormorant Garamond',serif`
+- **Cormorant Garamond** italic — body copy (`.sec-body`, card text, poem lines), and standalone headings (`.sec-heading`, `.pm-heading`) at light weight/italic
+- **Great Vibes** — the `&` ampersand glyph (`.amp`, `.name-amp`) in hero/footer names
+- **Cinzel** — SVG-only fallback in the seating chart graphics; not otherwise used
 
 Font sizes should use `clamp()` for responsive scaling. Never hardcode px sizes for headings.
 
@@ -65,26 +68,28 @@ Never use JS animation libraries. Keep everything CSS + vanilla JS.
 
 ## Key Sections (in order)
 
+0. **#env-overlay** — Envelope intro gate shown before everything else (see Stack section above); not a nav target
 1. **#home** — Hero with names, date, parallax background, corner SVG botanicals, scroll cue
-2. **#couple-photo** — Split grid: photo left, text right
-3. **#countdown** — Live countdown to 5 Ιουλίου 2026 19:50
-4. **#story** — 4-card story grid (2020, 2022, 2025, 2026)
+2. **#countdown** — Live countdown (see datetime note below)
+3. **#poem-section** — Photo + short italic poem lines, split layout
+4. **#pikantikes** — "Πικάντικες Πληροφορίες" — photo split + card grid of playful Q&A about the couple (nav label "Πικάντικα")
 5. **#families** — Two-column family names (νύφη / γαμπρός)
 6. **#koumparos** — Κουμπάρα: Δέσποινα Τόκα
-7. **#program** — Alternating timeline with dots
-8. **#ceremony** — Church: Ιερός Ναός Προφήτη Ηλία, 19:50, embedded map
-9. **#reception** — Venue: Κτήμα Έλενα, Αμπελώνας, ~21:00, embedded map
-10. **#qa** — Dark background Q&A grid
-11. **footer** — Names, divider, closing message
+7. **#program** — Alternating timeline with dots, covering prep → ceremony → reception (no separate `#ceremony`/`#reception` sections — each timeline item links out to Google Maps via a `.tl-loc` link rather than an embedded iframe map)
+8. **#qa** — Dark background Q&A grid ("Συχνές Ερωτήσεις")
+9. **#seating-section > #seating** — Interactive SVG seating/table map of Κτήμα Έλενα (nav label "Θέσεις")
+10. **footer** — Names, divider, closing message
+
+Nav links (desktop + mobile drawer) target: `#home`, `#pikantikes`, `#families`, `#koumparos`, `#program`, `#qa`, `#seating`.
 
 ## Important Details
 
-- Wedding datetime: `2026-07-05T19:50:00` (used in countdown JS)
-- Church coordinates: `39.6241144, 22.412569`
-- Reception: Κτήμα Έλενα, Αμπελώνας, Λάρισα
+- Countdown JS target: `2026-07-05T19:50:00` — **note this does not match the 20:00 ceremony time shown in the `#program` timeline**; flag this discrepancy rather than silently "fixing" one side if it comes up.
+- Day-of timeline (from `#program`): 15:30 groom prep (Comfort Suites & Rooms) → 17:30 bride prep (Γαλήνη, Λάρισα) → 20:00 Θρησκευτική Τελετή, Ιερός Ναός Προφήτη Ηλία, Λάρισα → ~21:00 Δεξίωση, Κτήμα Έλενα, Αμπελώνας, Λάρισα
 - Κουμπάρα: Δέσποινα Τόκα
 - Bride's parents: Χρήστος Κωστάκης & Αγλαΐα Παναστασίου
 - Groom's parents: Αχιλλέας Ντσούνος & Μαρία Παππά
+- Assets: `photos/IMG_1.jpg`–`IMG_3.jpg` (also precached by `sw.js`), `assets/menu.jpg`, self-hosted fonts under `fonts/`
 
 ## Cross-Browser & Cross-Device Compatibility
 
@@ -101,9 +106,10 @@ Every change must work correctly on **all** of these targets — not just deskto
 ### Rules that prevent the most common breakage
 
 **Fonts**
-- Always load Google Fonts from `<head>` via `<link rel="stylesheet">` — never defer via JS injection.
-- Always include `<link rel="preconnect" href="https://fonts.googleapis.com">` and `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>` before the stylesheet link.
-- Never rely on `font-display: swap` alone to handle slow networks on iOS — the swap window is unreliable there.
+- Fonts are self-hosted via `@font-face` in the first `<style>` block in `<head>`, pointing at `fonts/*.woff2` — never move this to Google Fonts CDN or defer loading via JS injection (both would add an external dependency and break the offline/service-worker guarantee).
+- Each family is split into `latin` / `latin-ext` / `greek-ext` woff2 subsets via `unicode-range` — if adding a new self-hosted font, follow the same subset pattern rather than shipping one unsplit file.
+- Any new self-hosted font file must also be added to the `ASSETS` array in `sw.js` or it won't be available offline.
+- Never rely on `font-display: swap` alone to handle slow networks on iOS — the swap window is unreliable there (already set on all `@font-face` rules here).
 
 **CSS**
 - Use `-webkit-` prefixes for: `backdrop-filter`, `-webkit-overflow-scrolling`, `-webkit-font-smoothing`.
@@ -126,7 +132,7 @@ Every change must work correctly on **all** of these targets — not just deskto
 - [ ] Does it look correct at 390px width (iPhone 14 viewport)?
 - [ ] Does it look correct at 768px width (iPad)?
 - [ ] Does it look correct at 1280px+ (desktop)?
-- [ ] Are fonts loading from `<head>`, not deferred JS?
+- [ ] Are fonts loading via the self-hosted `@font-face` rules in `<head>`, not deferred JS or an external CDN?
 - [ ] Are there any `-webkit-` prefixes needed for new CSS properties?
 - [ ] If images were changed: remind user to hard-refresh on device.
 
@@ -139,7 +145,7 @@ Every change must work correctly on **all** of these targets — not just deskto
 - Add `reveal` / `reveal-left` / `reveal-right` + delay classes to any new content blocks
 - Use `clamp()` for responsive font sizes
 - Test on mobile — grids must collapse gracefully
-- Load Google Fonts from `<head>` with preconnect (see Cross-Browser section)
+- Keep fonts self-hosted via `@font-face` in `<head>` (see Cross-Browser section) and update `sw.js`'s `ASSETS` list if you add new font files or photos
 
 **Don't:**
 - Introduce JS libraries or CSS frameworks
